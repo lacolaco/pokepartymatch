@@ -1,0 +1,5 @@
+<nz-select nzShowSearch [ngModel]="value.idx" (ngModelChange)="onSelect($event)" >
+  <ng-container *ngFor="let p of pokemons">
+    <nz-option [nzValue]="p.idx" [nzLabel]="p.name.jpn"></nz-option>
+  </ng-container>
+</nz-select>

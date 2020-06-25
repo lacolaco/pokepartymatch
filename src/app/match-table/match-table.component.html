@@ -1,0 +1,40 @@
+<ng-container *ngIf="matchTable$ | async as matchTable">
+  <div class="match-table">
+    <div class="match-table-header">
+      <div class="match-table-header-row">
+        <div class="table-cell"></div>
+        <div class="table-cell" *ngFor="let pokemon of matchTable.party.members; index as partyIndex">
+          <app-pokeicon [pokemon]="pokemon"></app-pokeicon>
+          <app-pokeselect [value]="pokemon" (valueChange)="changePartyPokemon(matchTable, partyIndex, $event)"></app-pokeselect>
+        </div>
+      </div>
+    </div>
+    <div class="match-table-body">
+      <div class="match-table-row" *ngFor="let enemy of matchTable.enemies; index as enemyIndex">
+        <div class="table-cell">
+          <app-pokeicon [pokemon]="enemy.pokemon"></app-pokeicon>
+          <app-pokeselect [value]="enemy.pokemon" (valueChange)="changeEnemyPokemon(matchTable, enemyIndex, $event)"></app-pokeselect>
+        </div>
+        <div class="table-cell match" *ngFor="let match of enemy.matches">
+          <select [value]="match">
+            <option></option>
+            <option>有利</option>
+            <option>不利</option>
+          </select>
+        </div>
+        <div class="table-cell">
+          <button nz-button nzType="default" nzShape="circle" (click)="removeEnemy(matchTable, enemyIndex)" *ngIf="enemyIndex !== 0">
+            <i nz-icon nzType="close" nzTheme="outline"></i>
+          </button>
+        </div>
+      </div>
+      <div class="match-table-row">
+        <div class="table-cell">
+          <button nz-button nzType="default" nzShape="circle" (click)="addEnemy(matchTable)">
+            <i nz-icon nzType="plus" nzTheme="outline"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

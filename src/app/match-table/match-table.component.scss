@@ -1,0 +1,52 @@
+:host {
+  display: block;
+}
+
+.match-table {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+
+  .table-cell {
+    width: 128px;
+    height: 96px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+}
+
+.match-table-header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+
+  border-bottom: 1px solid #000;
+
+  .match-table-header-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.header-title {
+  font-size: 1.3rem;
+}
+
+.match-table-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .match-table-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
