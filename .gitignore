@@ -9,7 +9,8 @@
 
 # dependencies
 /node_modules
-/src/assets/pokesprite-images
+/src/assets/data
+/src/assets/pokemon-gen8
 
 # profiling files
 chrome-profiler-events*.json

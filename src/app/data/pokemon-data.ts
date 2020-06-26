@@ -20,7 +20,7 @@ export interface PokemonData {
   };
 }
 
-const pokemonData: Record<string, PokemonData> = require('../../assets/pokesprite-images/data/pokemon.json');
+const pokemonData: Record<string, PokemonData> = require('../../assets/data/pokemon.json');
 
 export const pokemons: Pokemon[] = Object.entries(pokemonData)
   .map(([, data]) => {
