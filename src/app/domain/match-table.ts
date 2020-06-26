@@ -1,6 +1,6 @@
-import { PokemonData } from './pokemon-data';
+import { Pokemon } from './pokemon';
 
-export type PartyMembers = PokemonData[];
+export type PartyMembers = Pokemon[];
 
 export class Party {
   private constructor(public readonly members: PartyMembers) {
@@ -19,7 +19,7 @@ export class Party {
     return new Party(party.members);
   }
 
-  setMember(index: number, pokemon: PokemonData): Party {
+  setMember(index: number, pokemon: Pokemon): Party {
     this.members[index] = pokemon;
     return new Party([...this.members]);
   }
@@ -30,9 +30,9 @@ export type MatchValue = 'win' | 'loss' | null;
 export type Matches = MatchValue[];
 
 export class Enemy {
-  private constructor(public readonly pokemon: PokemonData, public readonly matches: Matches) {}
+  private constructor(public readonly pokemon: Pokemon, public readonly matches: Matches) {}
 
-  static create({ pokemon, matches }: { pokemon: PokemonData; matches: Matches }): Enemy {
+  static create({ pokemon, matches }: { pokemon: Pokemon; matches: Matches }): Enemy {
     return new Enemy(pokemon, matches);
   }
 
@@ -61,7 +61,7 @@ export class MatchTable {
     );
   }
 
-  setPartyMember(index: number, pokemon: PokemonData): MatchTable {
+  setPartyMember(index: number, pokemon: Pokemon): MatchTable {
     return MatchTable.create({
       party: this.party.setMember(index, pokemon),
       enemies: this.enemies,

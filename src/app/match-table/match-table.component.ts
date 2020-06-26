@@ -1,9 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { MatchTable, Party, Enemy } from '../domain/match-table';
-import { pokemonData } from '../data/pokemon-data';
 import { skip } from 'rxjs/operators';
-import { PokemonData } from '../domain/pokemon-data';
+import { pokemons } from '../data/pokemon-data';
+import { Enemy, MatchTable, Party } from '../domain/match-table';
+import { Pokemon } from '../domain/pokemon';
 
 @Component({
   selector: 'app-match-table',
@@ -15,16 +15,16 @@ export class MatchTableComponent implements OnInit {
   readonly matchTable$ = new BehaviorSubject<MatchTable>(
     MatchTable.create({
       party: Party.create([
-        pokemonData['815'],
-        pokemonData['887'],
-        pokemonData['778'],
-        pokemonData['468'],
-        pokemonData['530'],
-        pokemonData['143'],
+        pokemons.find((p) => p.idx === '815')!,
+        pokemons.find((p) => p.idx === '887')!,
+        pokemons.find((p) => p.idx === '778')!,
+        pokemons.find((p) => p.idx === '468')!,
+        pokemons.find((p) => p.idx === '530')!,
+        pokemons.find((p) => p.idx === '143')!,
       ]),
       enemies: [
         Enemy.create({
-          pokemon: pokemonData['887'],
+          pokemon: pokemons.find((p) => p.idx === '887')!,
           matches: [null, null, null, null, null, null],
         }),
       ],
@@ -52,7 +52,7 @@ export class MatchTableComponent implements OnInit {
     this.matchTable$.next(
       matchTable.addEnemy(
         Enemy.create({
-          pokemon: pokemonData['815'],
+          pokemon: pokemons.find((p) => p.idx === '815')!,
           matches: [null, null, null, null, null, null],
         })
       )
@@ -63,11 +63,11 @@ export class MatchTableComponent implements OnInit {
     this.matchTable$.next(matchTable.removeEnemy(index));
   }
 
-  changePartyPokemon(matchTable: MatchTable, index: number, pokemon: PokemonData): void {
+  changePartyPokemon(matchTable: MatchTable, index: number, pokemon: Pokemon): void {
     this.matchTable$.next(matchTable.setPartyMember(index, pokemon));
   }
 
-  changeEnemyPokemon(matchTable: MatchTable, index: number, pokemon: PokemonData): void {
+  changeEnemyPokemon(matchTable: MatchTable, index: number, pokemon: Pokemon): void {
     this.matchTable$.next(
       matchTable.setEnemy(
         index,

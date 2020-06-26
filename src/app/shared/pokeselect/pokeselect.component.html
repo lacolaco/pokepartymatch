@@ -1,5 +1,12 @@
-<nz-select nzShowSearch [ngModel]="value.idx" (ngModelChange)="onSelect($event)" >
-  <ng-container *ngFor="let p of pokemons">
-    <nz-option [nzValue]="p.idx" [nzLabel]="p.name.jpn"></nz-option>
-  </ng-container>
-</nz-select>
+<ng-container *ngIf="selectOptions$ | async as selectOptions">
+  <nz-select
+    nzShowSearch
+    nzServerSearch
+    [ngModel]="value.slug"
+    (ngModelChange)="onSelect($event)"
+    [nzOptions]="selectOptions"
+    [nzDropdownMatchSelectWidth]="false"
+    (nzOnSearch)="onSearchChange($event)"
+  >
+  </nz-select>
+</ng-container>

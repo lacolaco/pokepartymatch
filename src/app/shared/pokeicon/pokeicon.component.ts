@@ -1,9 +1,5 @@
-import {
-  ChangeDetectionStrategy, Component,
-
-  Input
-} from '@angular/core';
-import { PokemonData } from 'src/app/domain/pokemon-data';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Pokemon } from 'src/app/domain/pokemon';
 
 @Component({
   selector: 'app-pokeicon',
@@ -13,5 +9,5 @@ import { PokemonData } from 'src/app/domain/pokemon-data';
 })
 export class PokeiconComponent {
   @Input()
-  pokemon!: PokemonData;
+  pokemon!: Pokemon;
 }
