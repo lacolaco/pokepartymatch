@@ -11,6 +11,10 @@ const pokemonToOption = (p: Pokemon): { value: string; label: string } => {
   };
 };
 
+const normalizeRomajiName = (name: string): string => {
+  return name.toLowerCase().replace('ā', 'a-').replace('ī', 'i-').replace('ū', 'u-').replace('ē', 'e-').replace('ō', 'o-');
+};
+
 @Component({
   selector: 'app-pokeselect',
   templateUrl: './pokeselect.component.html',
@@ -45,7 +49,7 @@ export class PokeselectComponent implements OnInit, OnDestroy {
             if (search.trim().length === 0) {
               return true;
             }
-            return `${p.names.eng.toLowerCase()} ${p.names.jpn} ${p.names.jpn_ro.toLowerCase()}`.includes(search);
+            return `${p.names.eng.toLowerCase()} ${p.names.jpn} ${normalizeRomajiName(p.names.jpn_ro)}`.includes(search);
           })
           .map(pokemonToOption)
       );
