@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { skip } from 'rxjs/operators';
 import { pokemons } from '../data/pokemon-data';
-import { Enemy, MatchTable, Party } from '../domain/match-table';
+import { Enemy, MatchTable, Party, MatchValue } from '../domain/match-table';
 import { Pokemon } from '../domain/pokemon';
 
 @Component({
@@ -25,7 +25,7 @@ export class MatchTableComponent implements OnInit {
       enemies: [
         Enemy.create({
           pokemon: pokemons.find((p) => p.idx === '887')!,
-          matches: [null, null, null, null, null, null],
+          matches: [null, null, 'win', 'win', null, null],
         }),
       ],
     })
@@ -77,5 +77,9 @@ export class MatchTableComponent implements OnInit {
         })
       )
     );
+  }
+
+  changeMatch(matchTable: MatchTable, enemyIndex: number, matchIndex: number, match: MatchValue): void {
+    this.matchTable$.next(matchTable.setMatch(enemyIndex, matchIndex, match));
   }
 }

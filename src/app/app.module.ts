@@ -14,11 +14,12 @@ import { AppComponent } from './app.component';
 import { MatchTableComponent } from './match-table/match-table.component';
 import { PokeiconComponent } from './shared/pokeicon/pokeicon.component';
 import { PokeselectComponent } from './shared/pokeselect/pokeselect.component';
+import { MatchInputComponent } from './shared/match-input/match-input.component';
 
 registerLocaleData(ja);
 
 @NgModule({
-  declarations: [AppComponent, PokeiconComponent, PokeselectComponent, MatchTableComponent],
+  declarations: [AppComponent, PokeiconComponent, PokeselectComponent, MatchTableComponent, MatchInputComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

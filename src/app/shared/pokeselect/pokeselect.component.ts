@@ -34,7 +34,8 @@ export class PokeselectComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (!this.value) {
-      this.setValue(pokemons[0]);
+      this.value = pokemons[0];
+      this.valueChange.emit(this.value);
     }
 
     this.searchInput$.pipe(takeUntil(this.onDestroy$), debounceTime(200)).subscribe((search) => {
@@ -60,15 +61,10 @@ export class PokeselectComponent implements OnInit, OnDestroy {
     if (pokemon == null) {
       throw new Error(`app-pokeselect: invalid value: ${slug}`);
     }
-    this.setValue(pokemon);
+    this.valueChange.emit(pokemon);
   }
 
   onSearchChange(search: string): void {
     this.searchInput$.next(search.toLowerCase());
-  }
-
-  private setValue(value: Pokemon): void {
-    this.value = value;
-    this.valueChange.emit(value);
   }
 }

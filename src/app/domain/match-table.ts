@@ -43,6 +43,18 @@ export class Enemy {
     }
     return new Enemy(enemy.pokemon, enemy.matches);
   }
+
+  get hasNoWinMatch(): boolean {
+    return this.matches.every((match) => match !== 'win');
+  }
+
+  setMatch(index: number, match: MatchValue): Enemy {
+    this.matches[index] = match;
+    return Enemy.create({
+      pokemon: this.pokemon,
+      matches: [...this.matches],
+    });
+  }
 }
 
 export class MatchTable {
@@ -87,6 +99,14 @@ export class MatchTable {
     return MatchTable.create({
       party: this.party,
       enemies: this.enemies.filter((_, i) => i !== index),
+    });
+  }
+
+  setMatch(enemyIndex: number, matchIndex: number, match: MatchValue): MatchTable {
+    this.enemies[enemyIndex] = this.enemies[enemyIndex].setMatch(matchIndex, match);
+    return MatchTable.create({
+      party: this.party,
+      enemies: [...this.enemies],
     });
   }
 }

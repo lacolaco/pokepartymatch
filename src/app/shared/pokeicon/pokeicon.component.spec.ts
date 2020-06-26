@@ -8,9 +8,8 @@ describe('PokeiconComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PokeiconComponent ]
-    })
-    .compileComponents();
+      declarations: [PokeiconComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

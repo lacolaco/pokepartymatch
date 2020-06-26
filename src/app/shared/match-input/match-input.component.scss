@@ -1,0 +1,30 @@
+:host {
+  display: block;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.button-win {
+  background-color: #fffefe;
+  font-weight: bold;
+
+  &.is-selected {
+    border-width: 0;
+    background-color: #54baf5;
+    color: white;
+  }
+}
+.button-loss {
+  background-color: #fffefe;
+  font-weight: bold;
+
+  &.is-selected {
+    border-width: 0;
+    background-color: #fb2d2d;
+    color: white;
+  }
+}

@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MatchTableComponent } from './match-table.component';
+import { MatchInputComponent } from './match-input.component';
 
-describe('MatchTableComponent', () => {
-  let component: MatchTableComponent;
-  let fixture: ComponentFixture<MatchTableComponent>;
+describe('MatchInputComponent', () => {
+  let component: MatchInputComponent;
+  let fixture: ComponentFixture<MatchInputComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MatchTableComponent],
+      declarations: [MatchInputComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MatchTableComponent);
+    fixture = TestBed.createComponent(MatchInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
