@@ -3,6 +3,10 @@
   width: 100%;
 }
 
+$columnWidth: 144px;
+$headerColumnWidth: 200px;
+$headerRowHeight: 96px;
+
 .match-table {
   display: flex;
   flex-direction: column;
@@ -10,16 +14,30 @@
   padding: 16px;
 
   .table-cell {
-    width: 144px;
-    height: 96px;
+    width: $columnWidth;
     padding: 4px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 
     &:not(:last-child) {
       margin-right: 8px;
+    }
+  }
+
+  .header-column {
+    width: $headerColumnWidth;
+  }
+
+  .header-row {
+    height: $headerRowHeight;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    > .header-row-cell {
+      width: $columnWidth;
+
+      &:not(:last-child) {
+        margin-right: 8px;
+      }
     }
   }
 }
@@ -31,16 +49,6 @@
   align-items: flex-start;
 
   border-bottom: 1px solid #000;
-
-  .match-table-header-row {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-  }
-}
-
-.header-title {
-  font-size: 1.3rem;
 }
 
 .match-table-body {
@@ -60,12 +68,19 @@
   }
 }
 
-.enemy {
-  position: relative;
+.party-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .remove-button {
-    position: absolute;
-    top: 4px;
-    left: 4px;
+.enemy {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  > app-pokeselect {
+    width: 128px;
+    margin-right: 4px;
   }
 }

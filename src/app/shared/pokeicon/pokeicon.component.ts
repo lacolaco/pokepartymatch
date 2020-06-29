@@ -10,4 +10,11 @@ import { Pokemon } from 'src/app/domain/pokemon';
 export class PokeiconComponent {
   @Input()
   pokemon!: Pokemon;
+
+  @Input()
+  height = 56;
+
+  get width(): number {
+    return (68 / 56) * this.height;
+  }
 }
