@@ -31,8 +31,6 @@ export class MatchTableComponent implements OnInit {
     })
   );
 
-  constructor() {}
-
   ngOnInit(): void {
     const storeKey = 'pokemonbuild.matchTable.v1.1';
 
@@ -65,6 +63,10 @@ export class MatchTableComponent implements OnInit {
     this.matchTable$.next(matchTable.removeEnemy(index));
   }
 
+  resetPartyMember(matchTable: MatchTable, index: number): void {
+    this.matchTable$.next(matchTable.resetMatches(index));
+  }
+
   changePartyPokemon(matchTable: MatchTable, index: number, pokemon: Pokemon): void {
     this.matchTable$.next(matchTable.setPartyMember(index, pokemon));
   }
@@ -83,5 +85,13 @@ export class MatchTableComponent implements OnInit {
 
   changeMatch(matchTable: MatchTable, enemyIndex: number, matchIndex: number, match: MatchValue): void {
     this.matchTable$.next(matchTable.setMatch(enemyIndex, matchIndex, match));
+  }
+
+  trackByForPartyMember(index: number, item: Pokemon): string {
+    return `${index}:${item.key}`;
+  }
+
+  trackByForEmemies(index: number, item: Enemy): string {
+    return `${index}:${item.pokemon.key}`;
   }
 }

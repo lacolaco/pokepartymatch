@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CloseOutline, PlusOutline } from '@ant-design/icons-angular/icons';
+import { CloseOutline, PlusOutline, ClearOutline } from '@ant-design/icons-angular/icons';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { ja_JP, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -24,7 +24,7 @@ registerLocaleData(ja);
     BrowserModule,
     BrowserAnimationsModule,
     NzSelectModule,
-    NzIconModule.forRoot([CloseOutline, PlusOutline]),
+    NzIconModule.forRoot([CloseOutline, PlusOutline, ClearOutline]),
     NzButtonModule,
     NzTypographyModule,
     FormsModule,

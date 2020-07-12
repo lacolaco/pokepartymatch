@@ -80,6 +80,13 @@ export class MatchTable {
     });
   }
 
+  resetMatches(partyMemberIndex: number): MatchTable {
+    return MatchTable.create({
+      party: this.party,
+      enemies: this.enemies.map((e) => e.setMatch(partyMemberIndex, null)),
+    });
+  }
+
   addEnemy(enemy: Enemy): MatchTable {
     return MatchTable.create({
       party: this.party,

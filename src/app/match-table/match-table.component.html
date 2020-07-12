@@ -3,9 +3,22 @@
     <div class="match-table-header">
       <div class="header-row">
         <div class="header-column"></div>
-        <div class="header-row-cell party-member" *ngFor="let pokemon of matchTable.party.members; index as partyIndex">
+        <div
+          class="header-row-cell party-member"
+          *ngFor="let pokemon of matchTable.party.members; trackBy: trackByForPartyMember; index as partyIndex"
+        >
           <app-pokeicon [pokemon]="pokemon"></app-pokeicon>
           <app-pokeselect [value]="pokemon" (valueChange)="changePartyPokemon(matchTable, partyIndex, $event)"></app-pokeselect>
+          <button
+            class="reset-party-member-button"
+            nz-button
+            nzSize="small"
+            nzShape="circle"
+            (click)="resetPartyMember(matchTable, partyIndex)"
+            title="Clear matches"
+          >
+            <i nz-icon nzType="clear" nzTheme="outline"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -13,7 +26,7 @@
       <div
         class="match-table-row"
         [class.has-no-win-match]="enemy.hasNoWinMatch"
-        *ngFor="let enemy of matchTable.enemies; index as enemyIndex"
+        *ngFor="let enemy of matchTable.enemies; trackBy: trackByForEmemies; index as enemyIndex"
       >
         <div class="header-column enemy">
           <app-pokeicon [pokemon]="enemy.pokemon" [height]="32"></app-pokeicon>
@@ -25,6 +38,7 @@
             nzShape="circle"
             (click)="removeEnemy(matchTable, enemyIndex)"
             *ngIf="enemyIndex !== 0"
+            title="Clear this enemy"
           >
             <i nz-icon nzType="close" nzTheme="outline"></i>
           </button>
