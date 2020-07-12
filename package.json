@@ -8,8 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "cp -R node_modules/pokesprite-images/data src/assets/ && cp -R node_modules/pokesprite-images/pokemon-gen8 src/assets/",
-    "format": "prettier --write src/app"
+    "postinstall": "cp -R node_modules/pokesprite-images/pokemon-gen8 src/assets/",
+    "format": "prettier --write src/app",
+    "tools:pokemon-data": "ts-node --project tsconfig.tools.json tools/pokemon-data.ts"
   },
   "private": true,
   "dependencies": {
@@ -24,7 +25,7 @@
     "@angular/router": "~10.0.1",
     "@ant-design/icons-angular": "^9.0.1",
     "ng-zorro-antd": "^9.2.2",
-    "pokesprite-images": "^2.0.6",
+    "pokesprite-images": "msikma/pokesprite",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3",

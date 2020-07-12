@@ -6,13 +6,9 @@ import { Pokemon } from 'src/app/domain/pokemon';
 
 const pokemonToOption = (p: Pokemon): { value: string; label: string } => {
   return {
-    value: p.slug,
+    value: p.key,
     label: p.name_jpn,
   };
-};
-
-const normalizeRomajiName = (name: string): string => {
-  return name.toLowerCase().replace('ā', 'a-').replace('ī', 'i-').replace('ū', 'u-').replace('ē', 'e-').replace('ō', 'o-');
 };
 
 @Component({
@@ -49,7 +45,7 @@ export class PokeselectComponent implements OnInit, OnDestroy {
             if (search.trim().length === 0) {
               return true;
             }
-            return `${p.names.eng.toLowerCase()} ${p.names.jpn} ${normalizeRomajiName(p.names.jpn_ro)}`.includes(search);
+            return p.names.some((name) => name.includes(search));
           })
           .map(pokemonToOption)
       );
@@ -60,10 +56,10 @@ export class PokeselectComponent implements OnInit, OnDestroy {
     this.onDestroy$.next();
   }
 
-  onSelect(slug: string): void {
-    const pokemon = pokemons.find((p) => p.slug === slug);
+  onSelect(value: string): void {
+    const pokemon = pokemons.find((p) => p.key === value);
     if (pokemon == null) {
-      throw new Error(`app-pokeselect: invalid value: ${slug}`);
+      throw new Error(`app-pokeselect: invalid value: ${value}`);
     }
     this.valueChange.emit(pokemon);
   }

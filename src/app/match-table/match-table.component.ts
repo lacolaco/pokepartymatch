@@ -34,7 +34,9 @@ export class MatchTableComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    const stored = localStorage.getItem('pokemonbuild.matchTable.v1');
+    const storeKey = 'pokemonbuild.matchTable.v1.1';
+
+    const stored = localStorage.getItem(storeKey);
     if (stored) {
       try {
         this.matchTable$.next(MatchTable.fromJSON(JSON.parse(stored)));
@@ -44,7 +46,7 @@ export class MatchTableComponent implements OnInit {
     }
 
     this.matchTable$.pipe(skip(1)).subscribe((table) => {
-      localStorage.setItem('pokemonbuild.matchTable.v1', JSON.stringify(table));
+      localStorage.setItem(storeKey, JSON.stringify(table));
     });
   }
 
