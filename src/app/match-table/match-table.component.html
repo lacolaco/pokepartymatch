@@ -24,9 +24,10 @@
     </div>
     <div class="match-table-body">
       <div
+        *ngFor="let enemy of matchTable.enemies; trackBy: trackByForEmemies; index as enemyIndex; odd as odd"
         class="match-table-row"
         [class.has-no-win-match]="enemy.hasNoWinMatch"
-        *ngFor="let enemy of matchTable.enemies; trackBy: trackByForEmemies; index as enemyIndex"
+        [class.row-odd]="odd"
       >
         <div class="header-column enemy">
           <app-pokeicon [pokemon]="enemy.pokemon" [height]="32"></app-pokeicon>

@@ -62,8 +62,12 @@ $headerRowHeight: 96px;
     flex-direction: row;
     align-items: center;
 
+    &.row-odd {
+      background-color: #f0f0f0;
+    }
+
     &.has-no-win-match {
-      background: #ffccd0;
+      background-color: #ffccd0;
     }
   }
 }
