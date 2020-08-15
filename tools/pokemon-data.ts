@@ -172,6 +172,7 @@ const pokemons: Pokemon[] = Object.entries(pokemonData)
       .map(([form]) => {
         const slug = form === '$' ? data.slug.eng : `${data.slug.eng}-${form}`;
 
+        // ミノムッチ系統
         if (data.slug.eng === 'burmy' || data.slug.eng === 'wormadam') {
           switch (form) {
             case '$': {
@@ -203,6 +204,7 @@ const pokemons: Pokemon[] = Object.entries(pokemonData)
             }
           }
         }
+        // ロトム系統
         if (data.slug.eng === 'rotom' && form !== '$') {
           switch (form) {
             case 'fan': {
@@ -252,6 +254,7 @@ const pokemons: Pokemon[] = Object.entries(pokemonData)
             }
           }
         }
+        // ダルマッカ系統
         if (data.slug.eng === 'darmanitan' && form !== '$') {
           switch (form) {
             case 'zen': {
@@ -274,6 +277,7 @@ const pokemons: Pokemon[] = Object.entries(pokemonData)
             }
           }
         }
+        // 化身・霊獣系統
         if (['tornadus', 'thundurus', 'landorus'].includes(data.slug.eng)) {
           switch (form) {
             case '$': {
@@ -296,6 +300,7 @@ const pokemons: Pokemon[] = Object.entries(pokemonData)
             }
           }
         }
+        // キュレム
         if (data.slug.eng === 'kyurem') {
           switch (form) {
             case 'black': {
@@ -318,6 +323,7 @@ const pokemons: Pokemon[] = Object.entries(pokemonData)
             }
           }
         }
+        // オドリドリ
         if (data.slug.eng === 'oricorio') {
           switch (form) {
             case '$': {
@@ -358,6 +364,7 @@ const pokemons: Pokemon[] = Object.entries(pokemonData)
             }
           }
         }
+        // ルガルガン
         if (data.slug.eng === 'lycanroc') {
           switch (form) {
             case '$': {
@@ -389,6 +396,7 @@ const pokemons: Pokemon[] = Object.entries(pokemonData)
             }
           }
         }
+        // ネクロズマ
         if (data.slug.eng === 'necrozma') {
           switch (form) {
             case '$': {
@@ -429,6 +437,14 @@ const pokemons: Pokemon[] = Object.entries(pokemonData)
             }
           }
         }
+        // 性別による分岐
+        if (['meowstic', 'indeedee'].includes(data.slug.eng)) {
+          return [
+            { form, slug, idx: data.idx, name_jpn: `${data.name.jpn}♂`, names: data.name },
+            { form: `female`, slug: `female/${data.slug.eng}`, idx: data.idx, name_jpn: `${data.name.jpn}♀`, names: data.name },
+          ];
+        }
+        // ストリンダー
         if (data.slug.eng === 'toxtricity') {
           switch (form) {
             case '$': {
@@ -451,6 +467,7 @@ const pokemons: Pokemon[] = Object.entries(pokemonData)
             }
           }
         }
+        // ウーラオス
         if (data.slug.eng === 'urshifu') {
           switch (form) {
             case '$': {
