@@ -1,6 +1,6 @@
 name: Deployment to Firebase
 on:
-  oush:
+  push:
     branches:
       - master
     tags:
