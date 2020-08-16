@@ -16,6 +16,6 @@ jobs:
       - name: Build
         run: yarn build --prod --no-progress
       - name: Deploy
-        run: yarn deploy
+        run: yarn deploy -P production
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
