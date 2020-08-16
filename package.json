@@ -27,7 +27,7 @@
     "@angular/platform-browser-dynamic": "10.0.1",
     "@angular/router": "10.0.1",
     "@ant-design/icons-angular": "9.0.1",
-    "firebase": "7.15.5",
+    "firebase": "7.18.0",
     "ng-zorro-antd": "9.2.2",
     "pokesprite-images": "msikma/pokesprite",
     "rxjs": "6.5.5",
