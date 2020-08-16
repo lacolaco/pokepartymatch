@@ -2,5 +2,17 @@
   "projects": {
     "default": "pokepartymatch",
     "production": "pokepartymatch"
+  },
+  "targets": {
+    "pokepartymatch": {
+      "hosting": {
+        "staging": [
+          "pokepartymatch-dev"
+        ],
+        "production": [
+          "pokepartymatch"
+        ]
+      }
+    }
   }
 }

@@ -1,0 +1,21 @@
+name: Deployment (Production)
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install Dependencies
+        run: yarn install
+      - name: Build
+        run: yarn build --prod --no-progress
+      - name: Deploy
+        run: yarn deploy:production
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
