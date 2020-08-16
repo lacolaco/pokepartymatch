@@ -1,6 +1,6 @@
 {
   "name": "pokemonbuild",
-  "version": "0.0.0",
+  "version": "1.1.1",
   "scripts": {
     "ng": "ng",
     "start": "run-p 'start:*'",
@@ -13,7 +13,8 @@
     "deploy": "firebase deploy",
     "postinstall": "cp -R node_modules/pokesprite-images/pokemon-gen8 src/assets/",
     "format": "prettier --write src/app",
-    "tools:pokemon-data": "ts-node --project tsconfig.tools.json tools/pokemon-data.ts"
+    "tools:pokemon-data": "ts-node --project tsconfig.tools.json tools/pokemon-data.ts",
+    "release": "standard-version"
   },
   "private": true,
   "dependencies": {
@@ -62,6 +63,7 @@
     "prettier": "2.0.5",
     "protractor": "7.0.0",
     "puppeteer": "4.0.0",
+    "standard-version": "9.0.0",
     "ts-node": "8.3.0",
     "tslint": "6.1.2",
     "typescript": "3.9.5"
