@@ -1399,12 +1399,12 @@
     merge-source-map "^1.1.0"
     schema-utils "^2.6.4"
 
-"@lacolaco/reactive-store@^4.0.0":
+"@lacolaco/reactive-store@4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@lacolaco/reactive-store/-/reactive-store-4.0.0.tgz#20019116cf480be16a47cadde88d04aaaffa1e50"
   integrity sha512-btXCHbCQTkSrhDn4lwKUyDz/BuAc2mN1ZIT1svCsAzcjSJ61cu8MmB5Ttk9u7o97/hH6vUPhCLNjqjpT5ys5ag==
 
-"@ngrx/component@^10.0.0":
+"@ngrx/component@10.0.0":
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/@ngrx/component/-/component-10.0.0.tgz#7c3fb93f1b444c7e6e323a23a489c64c7e4fe524"
   integrity sha512-54Kp2nxgCzbRxo7w8Tc6d+L1mQEaC+V/c6tzB9ugVkNCjvaVyKXcNzwGgZYU4YRMbR53vcPPDhYozRd9d444mA==
@@ -8337,7 +8337,7 @@ npm-registry-fetch@^4.0.0:
     npm-package-arg "^6.1.0"
     safe-buffer "^5.2.0"
 
-npm-run-all@^4.1.5:
+npm-run-all@4.1.5:
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/npm-run-all/-/npm-run-all-4.1.5.tgz#04476202a15ee0e2e214080861bff12a51d98fba"
   integrity sha512-Oo82gJDAVcaMdi3nuoKFavkIHBRVqQ1qvMb+9LHk/cF4P6B2m8aP04hGf7oL6wZ9BuGwX1onlLhpuoofSyoQDQ==
