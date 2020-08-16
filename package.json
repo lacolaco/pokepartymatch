@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "firebase deploy -P pokepartymatch",
+    "deploy": "firebase deploy",
     "postinstall": "cp -R node_modules/pokesprite-images/pokemon-gen8 src/assets/",
     "format": "prettier --write src/app",
     "tools:pokemon-data": "ts-node --project tsconfig.tools.json tools/pokemon-data.ts"
@@ -44,7 +44,7 @@
     "@types/node": "12.12.47",
     "@types/puppeteer": "3.0.0",
     "codelyzer": "6.0.0-next.1",
-    "firebase-tools": "8.4.3",
+    "firebase-tools": "8.7.0",
     "fuzzy": "0.1.3",
     "inquirer": "6.5.2",
     "inquirer-autocomplete-prompt": "1.0.2",

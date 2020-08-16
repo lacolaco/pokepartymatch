@@ -1,11 +1,5 @@
 {
-  "targets": {
-    "pokepartymatch": {
-      "hosting": {
-        "production": [
-          "pokepartymatch"
-        ]
-      }
-    }
+  "projects": {
+    "default": "pokepartymatch"
   }
 }
