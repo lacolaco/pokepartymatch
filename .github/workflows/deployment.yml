@@ -1,8 +1,6 @@
 name: Deployment to Firebase
 on:
   push:
-    branches:
-      - master
     tags:
       - 'v*'
 
