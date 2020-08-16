@@ -8,13 +8,13 @@
           *ngFor="let pokemon of matchTable.party.members; trackBy: trackByForPartyMember; index as partyIndex"
         >
           <app-pokeicon [pokemon]="pokemon"></app-pokeicon>
-          <app-pokeselect [value]="pokemon" (valueChange)="changePartyPokemon(matchTable, partyIndex, $event)"></app-pokeselect>
+          <app-pokeselect [value]="pokemon" (valueChange)="changePartyPokemon(partyIndex, $event)"></app-pokeselect>
           <button
             class="reset-party-member-button"
             nz-button
             nzSize="small"
             nzShape="circle"
-            (click)="resetPartyMember(matchTable, partyIndex)"
+            (click)="resetPartyMember(partyIndex)"
             title="Clear matches"
           >
             <i nz-icon nzType="clear" nzTheme="outline"></i>
@@ -31,13 +31,13 @@
       >
         <div class="header-column enemy">
           <app-pokeicon [pokemon]="enemy.pokemon" [height]="32"></app-pokeicon>
-          <app-pokeselect [value]="enemy.pokemon" (valueChange)="changeEnemyPokemon(matchTable, enemyIndex, $event)"></app-pokeselect>
+          <app-pokeselect [value]="enemy.pokemon" (valueChange)="changeEnemyPokemon(enemyIndex, $event)"></app-pokeselect>
           <button
             class="remove-button"
             nz-button
             nzSize="small"
             nzShape="circle"
-            (click)="removeEnemy(matchTable, enemyIndex)"
+            (click)="removeEnemy(enemyIndex)"
             *ngIf="enemyIndex !== 0"
             title="Clear this enemy"
           >
@@ -45,12 +45,12 @@
           </button>
         </div>
         <div class="table-cell match" *ngFor="let match of enemy.matches; index as matchIndex">
-          <app-match-input [value]="match" (valueChange)="changeMatch(matchTable, enemyIndex, matchIndex, $event)"></app-match-input>
+          <app-match-input [value]="match" (valueChange)="changeMatch(enemyIndex, matchIndex, $event)"></app-match-input>
         </div>
       </div>
       <div class="match-table-row">
         <div class="table-cell">
-          <button nz-button nzType="default" nzShape="circle" (click)="addEnemy(matchTable)">
+          <button nz-button nzType="default" nzShape="circle" (click)="addEnemy()">
             <i nz-icon nzType="plus" nzTheme="outline"></i>
           </button>
         </div>

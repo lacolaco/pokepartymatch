@@ -1,63 +1,14 @@
+import { Serializable } from '../utils/serializable';
+import { Enemy, EnemyJSON, MatchValue } from './enemy';
+import { Party, PartyJSON } from './party';
 import { Pokemon } from './pokemon';
 
-export type PartyMembers = Pokemon[];
+export type MatchTableJSON = {
+  party: PartyJSON;
+  enemies: Array<EnemyJSON>;
+};
 
-export class Party {
-  private constructor(public readonly members: PartyMembers) {
-    this.members = members;
-  }
-
-  static create(members: PartyMembers): Party {
-    return new Party(members);
-  }
-
-  // tslint:disable-next-line: no-any
-  static fromJSON(party: any): Party {
-    if (!Array.isArray(party.members)) {
-      throw new Error('party.members is not an array.');
-    }
-    return new Party(party.members);
-  }
-
-  setMember(index: number, pokemon: Pokemon): Party {
-    this.members[index] = pokemon;
-    return new Party([...this.members]);
-  }
-}
-
-export type MatchValue = 'win' | 'loss' | null;
-
-export type Matches = MatchValue[];
-
-export class Enemy {
-  private constructor(public readonly pokemon: Pokemon, public readonly matches: Matches) {}
-
-  static create({ pokemon, matches }: { pokemon: Pokemon; matches: Matches }): Enemy {
-    return new Enemy(pokemon, matches);
-  }
-
-  // tslint:disable-next-line: no-any
-  static fromJSON(enemy: any): Enemy {
-    if (enemy.pokemon == null || !Array.isArray(enemy.matches)) {
-      throw new Error('enemy is not valid.');
-    }
-    return new Enemy(enemy.pokemon, enemy.matches);
-  }
-
-  get hasNoWinMatch(): boolean {
-    return this.matches.every((match) => match !== 'win');
-  }
-
-  setMatch(index: number, match: MatchValue): Enemy {
-    this.matches[index] = match;
-    return Enemy.create({
-      pokemon: this.pokemon,
-      matches: [...this.matches],
-    });
-  }
-}
-
-export class MatchTable {
+export class MatchTable implements Serializable {
   private constructor(public readonly party: Party, public readonly enemies: Enemy[]) {}
 
   static create({ party, enemies }: { party: Party; enemies: Enemy[] }): MatchTable {
@@ -65,12 +16,16 @@ export class MatchTable {
   }
 
   // tslint:disable-next-line: no-any
-  static fromJSON(stored: any): MatchTable {
-    return new MatchTable(
-      Party.fromJSON(stored.party),
-      // tslint:disable-next-line: no-any
-      stored.enemies.map((enemy: any) => Enemy.fromJSON(enemy))
-    );
+  static fromJSON(json: MatchTableJSON): MatchTable {
+    return new MatchTable(Party.fromJSON(json.party), json.enemies.map(Enemy.fromJSON));
+  }
+
+  // tslint:disable-next-line: no-any
+  toSerializable(): MatchTableJSON {
+    return {
+      party: this.party.toSerializable(),
+      enemies: this.enemies.map((e) => e.toSerializable()),
+    };
   }
 
   setPartyMember(index: number, pokemon: Pokemon): MatchTable {
@@ -80,7 +35,7 @@ export class MatchTable {
     });
   }
 
-  resetMatches(partyMemberIndex: number): MatchTable {
+  resetMatchesByPartyMemberIndex(partyMemberIndex: number): MatchTable {
     return MatchTable.create({
       party: this.party,
       enemies: this.enemies.map((e) => e.setMatch(partyMemberIndex, null)),

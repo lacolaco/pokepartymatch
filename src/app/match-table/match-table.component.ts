@@ -1,90 +1,56 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { skip } from 'rxjs/operators';
-import { pokemons } from '../data/pokemon-data';
-import { Enemy, MatchTable, Party, MatchValue } from '../domain/match-table';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { Enemy, MatchValue } from '../domain/enemy';
+import { MatchTable } from '../domain/match-table';
 import { Pokemon } from '../domain/pokemon';
+import { MatchTableStore } from './match-table.store';
+import { MatchTableUsecase } from './match-table.usecase';
 
 @Component({
   selector: 'app-match-table',
   templateUrl: './match-table.component.html',
   styleUrls: ['./match-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [MatchTableStore, MatchTableUsecase],
 })
-export class MatchTableComponent implements OnInit {
-  readonly matchTable$ = new BehaviorSubject<MatchTable>(
-    MatchTable.create({
-      party: Party.create([
-        pokemons.find((p) => p.idx === '815')!,
-        pokemons.find((p) => p.idx === '887')!,
-        pokemons.find((p) => p.idx === '778')!,
-        pokemons.find((p) => p.idx === '468')!,
-        pokemons.find((p) => p.idx === '530')!,
-        pokemons.find((p) => p.idx === '143')!,
-      ]),
-      enemies: [
-        Enemy.create({
-          pokemon: pokemons.find((p) => p.idx === '887')!,
-          matches: [null, null, 'win', 'win', null, null],
-        }),
-      ],
-    })
-  );
+export class MatchTableComponent implements OnInit, OnDestroy {
+  constructor(private readonly store: MatchTableStore, private readonly usecase: MatchTableUsecase) {}
+
+  readonly matchTable$: Observable<MatchTable> = this.store.select((state) => state.matchTable);
+
+  private readonly onDestroy$ = new Subject();
 
   ngOnInit(): void {
-    const storeKey = 'pokemonbuild.matchTable.v1.1';
-
-    const stored = localStorage.getItem(storeKey);
-    if (stored) {
-      try {
-        this.matchTable$.next(MatchTable.fromJSON(JSON.parse(stored)));
-      } catch (e) {
-        console.error(e);
-      }
-    }
-
-    this.matchTable$.pipe(skip(1)).subscribe((table) => {
-      localStorage.setItem(storeKey, JSON.stringify(table));
-    });
+    this.usecase.usePersistedState();
+    this.usecase.saveMatchTableOnChange();
   }
 
-  addEnemy(matchTable: MatchTable): void {
-    this.matchTable$.next(
-      matchTable.addEnemy(
-        Enemy.create({
-          pokemon: pokemons.find((p) => p.idx === '815')!,
-          matches: [null, null, null, null, null, null],
-        })
-      )
-    );
+  ngOnDestroy(): void {
+    this.onDestroy$.next();
   }
 
-  removeEnemy(matchTable: MatchTable, index: number): void {
-    this.matchTable$.next(matchTable.removeEnemy(index));
+  addEnemy(): void {
+    this.usecase.addEnemy();
   }
 
-  resetPartyMember(matchTable: MatchTable, index: number): void {
-    this.matchTable$.next(matchTable.resetMatches(index));
+  removeEnemy(index: number): void {
+    this.usecase.removeEnemy(index);
   }
 
-  changePartyPokemon(matchTable: MatchTable, index: number, pokemon: Pokemon): void {
-    this.matchTable$.next(matchTable.setPartyMember(index, pokemon));
+  resetPartyMember(index: number): void {
+    this.usecase.resetPartyMember(index);
   }
 
-  changeEnemyPokemon(matchTable: MatchTable, index: number, pokemon: Pokemon): void {
-    this.matchTable$.next(
-      matchTable.setEnemy(
-        index,
-        Enemy.create({
-          pokemon,
-          matches: matchTable.enemies[index].matches,
-        })
-      )
-    );
+  changePartyPokemon(index: number, pokemon: Pokemon): void {
+    this.usecase.changePartyPokemon(index, pokemon);
   }
 
-  changeMatch(matchTable: MatchTable, enemyIndex: number, matchIndex: number, match: MatchValue): void {
-    this.matchTable$.next(matchTable.setMatch(enemyIndex, matchIndex, match));
+  changeEnemyPokemon(index: number, pokemon: Pokemon): void {
+    this.usecase.changeEnemyPokemon(index, pokemon);
+  }
+
+  changeMatch(enemyIndex: number, matchIndex: number, match: MatchValue): void {
+    this.usecase.changeMatch(enemyIndex, matchIndex, match);
   }
 
   trackByForPartyMember(index: number, item: Pokemon): string {

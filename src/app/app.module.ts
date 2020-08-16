@@ -3,6 +3,7 @@ import ja from '@angular/common/locales/ja';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule, Settings as FirestoreSettings, SETTINGS as FIRESTORE_SETTINGS } from '@angular/fire/firestore';
 import { AngularFirePerformanceModule } from '@angular/fire/performance';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -36,9 +37,21 @@ registerLocaleData(ja);
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAnalyticsModule,
+    AngularFirestoreModule,
     AngularFirePerformanceModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: ja_JP }],
+  providers: [
+    { provide: NZ_I18N, useValue: ja_JP },
+    {
+      provide: FIRESTORE_SETTINGS,
+      useValue: environment.production
+        ? undefined
+        : ({
+            host: 'localhost:8080',
+            ssl: false,
+          } as FirestoreSettings),
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

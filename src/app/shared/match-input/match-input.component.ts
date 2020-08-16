@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatchValue } from 'src/app/domain/match-table';
+import { MatchValue } from '../../domain/enemy';
 
 @Component({
   selector: 'app-match-input',

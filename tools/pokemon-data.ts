@@ -554,7 +554,7 @@ const pokemons: Pokemon[] = Object.entries(pokemonData)
   .map((pokemon) => {
     return {
       ...pokemon,
-      key: `${pokemon.idx}${pokemon.form}`,
+      key: `${pokemon.idx}:${pokemon.form}`,
       names: [
         pokemon.names.eng.toLowerCase(),
         pokemon.names.jpn,
