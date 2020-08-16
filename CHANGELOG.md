@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/lacolaco/pokepartymatch/compare/v1.1.1...v1.1.2) (2020-08-16)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([#24](https://github.com/lacolaco/pokepartymatch/issues/24)) ([fadac40](https://github.com/lacolaco/pokepartymatch/commit/fadac40e698cced52571516b94c7300bdf396e8d))
+* **deps:** update dependency ng-zorro-antd to v9.3.0 ([#18](https://github.com/lacolaco/pokepartymatch/issues/18)) ([1d25197](https://github.com/lacolaco/pokepartymatch/commit/1d2519742096e7c6ae7c271d071a3897783c99ed))
+* **deps:** update dependency rxjs to v6.6.2 ([#19](https://github.com/lacolaco/pokepartymatch/issues/19)) ([3616cb1](https://github.com/lacolaco/pokepartymatch/commit/3616cb1b3abd3a00d7efe07ddc1b867196b098ba))
+* **deps:** update dependency tslib to v2.0.1 ([#20](https://github.com/lacolaco/pokepartymatch/issues/20)) ([d4d8046](https://github.com/lacolaco/pokepartymatch/commit/d4d8046b7f0afa6374fd814a20141a9ad7728963))
+
 ### 1.1.1 (2020-08-16)
 
 
