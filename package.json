@@ -31,7 +31,7 @@
     "ng-zorro-antd": "9.2.2",
     "pokesprite-images": "msikma/pokesprite",
     "rxjs": "6.5.5",
-    "tslib": "2.0.0",
+    "tslib": "2.0.1",
     "zone.js": "0.10.3"
   },
   "devDependencies": {
