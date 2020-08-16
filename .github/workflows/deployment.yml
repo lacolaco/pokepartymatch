@@ -13,6 +13,8 @@ jobs:
         uses: actions/checkout@master
       - name: Install Dependencies
         run: yarn install
+      - name: Build
+        run: yarn build --prod --no-progress
       - name: Deploy
         run: yarn deploy
         env:

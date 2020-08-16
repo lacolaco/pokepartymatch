@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng deploy",
+    "deploy": "firebase deploy",
     "postinstall": "cp -R node_modules/pokesprite-images/pokemon-gen8 src/assets/",
     "format": "prettier --write src/app",
     "tools:pokemon-data": "ts-node --project tsconfig.tools.json tools/pokemon-data.ts"
