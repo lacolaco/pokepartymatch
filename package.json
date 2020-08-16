@@ -45,7 +45,7 @@
     "@types/jasmine": "3.5.12",
     "@types/jasminewd2": "2.0.8",
     "@types/node": "12.12.54",
-    "@types/puppeteer": "3.0.0",
+    "@types/puppeteer": "3.0.1",
     "codelyzer": "6.0.0-next.1",
     "firebase-tools": "8.7.0",
     "fuzzy": "0.1.3",
