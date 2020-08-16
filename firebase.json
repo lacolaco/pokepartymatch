@@ -1,8 +1,8 @@
 {
   "hosting": [
     {
-      "target": "pokemonbuild",
-      "public": "dist/pokemonbuild",
+      "target": "production",
+      "public": "dist",
       "ignore": ["**/.*"],
       "headers": [
         {
