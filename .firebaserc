@@ -1,7 +1,6 @@
 {
   "projects": {
-    "default": "pokepartymatch",
-    "production": "pokepartymatch"
+    "default": "pokepartymatch"
   },
   "targets": {
     "pokepartymatch": {
