@@ -2,14 +2,14 @@
   display: block;
 }
 
-header {
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   padding: 16px 16px 0px;
 
-  .heading-red {
-    color: #ab0022;
-  }
-  .heading-blue {
-    color: #1b4da9;
+  .header-description {
+    font-size: 0.8rem;
   }
 }
 
