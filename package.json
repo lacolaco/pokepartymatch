@@ -44,7 +44,7 @@
     "@angular/compiler-cli": "10.0.1",
     "@types/jasmine": "3.5.12",
     "@types/jasminewd2": "2.0.8",
-    "@types/node": "12.12.47",
+    "@types/node": "12.12.54",
     "@types/puppeteer": "3.0.0",
     "codelyzer": "6.0.0-next.1",
     "firebase-tools": "8.7.0",
