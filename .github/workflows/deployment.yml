@@ -1,0 +1,19 @@
+name: Deployment to Firebase
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install Dependencies
+        run: yarn install
+      - name: Deploy
+        run: yarn deploy
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
