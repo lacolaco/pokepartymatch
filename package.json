@@ -31,7 +31,7 @@
     "@lacolaco/reactive-store": "^4.0.0",
     "@ngrx/component": "^10.0.0",
     "firebase": "7.18.0",
-    "ng-zorro-antd": "9.2.2",
+    "ng-zorro-antd": "9.3.0",
     "pokesprite-images": "2.2.4",
     "rxjs": "6.5.5",
     "tslib": "2.0.0",
