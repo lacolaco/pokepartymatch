@@ -8445,9 +8445,10 @@ pnp-webpack-plugin@1.6.4:
   dependencies:
     ts-pnp "^1.1.6"
 
-pokesprite-images@msikma/pokesprite:
-  version "2.1.0"
-  resolved "https://codeload.github.com/msikma/pokesprite/tar.gz/d7db467c49432ca669da9766a16e1baff6465c7a"
+pokesprite-images@2.2.4:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/pokesprite-images/-/pokesprite-images-2.2.4.tgz#83078f442dc6c36cc874771e53d9440527291ea4"
+  integrity sha512-D2vCOgXoiobRc2MLbqRPOa5XDI/9KF1oWjlBhAYzm3r1wGeWSZeGR0lkribzjIYG9H1Cx6FfLAlkWEIHcmfPvg==
 
 portfinder@^1.0.23, portfinder@^1.0.26:
   version "1.0.26"
