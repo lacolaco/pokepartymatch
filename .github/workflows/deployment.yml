@@ -1,8 +1,10 @@
 name: Deployment to Firebase
 on:
-  push:
+  oush:
     branches:
       - master
+    tags:
+      - 'v*'
 
 jobs:
   deploy:
