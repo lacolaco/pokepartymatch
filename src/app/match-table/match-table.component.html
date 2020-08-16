@@ -1,4 +1,4 @@
-<ng-container *ngIf="matchTable$ | async as matchTable">
+<ng-container *ngIf="matchTable$ | ngrxPush as matchTable">
   <div class="match-table">
     <div class="match-table-header">
       <div class="header-row">

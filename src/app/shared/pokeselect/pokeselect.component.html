@@ -1,4 +1,4 @@
-<ng-container *ngIf="selectOptions$ | async as selectOptions">
+<ng-container *ngIf="selectOptions$ | ngrxPush as selectOptions">
   <nz-select
     nzShowSearch
     nzServerSearch

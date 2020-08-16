@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CloseOutline, PlusOutline, ClearOutline } from '@ant-design/icons-angular/icons';
+import { ClearOutline, CloseOutline, PlusOutline } from '@ant-design/icons-angular/icons';
+import { ReactiveComponentModule } from '@ngrx/component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { ja_JP, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -12,9 +13,9 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { AppComponent } from './app.component';
 import { MatchTableComponent } from './match-table/match-table.component';
+import { MatchInputComponent } from './shared/match-input/match-input.component';
 import { PokeiconComponent } from './shared/pokeicon/pokeicon.component';
 import { PokeselectComponent } from './shared/pokeselect/pokeselect.component';
-import { MatchInputComponent } from './shared/match-input/match-input.component';
 
 registerLocaleData(ja);
 
@@ -23,6 +24,7 @@ registerLocaleData(ja);
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveComponentModule,
     NzSelectModule,
     NzIconModule.forRoot([CloseOutline, PlusOutline, ClearOutline]),
     NzButtonModule,
