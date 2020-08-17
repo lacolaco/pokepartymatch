@@ -7,17 +7,19 @@
           class="header-row-cell party-member"
           *ngFor="let pokemon of matchTable.party.members; trackBy: trackByForPartyMember; index as partyIndex"
         >
-          <app-pokeicon [pokemon]="pokemon"></app-pokeicon>
           <app-pokeselect [value]="pokemon" (valueChange)="changePartyPokemon(partyIndex, $event)"></app-pokeselect>
+          <div class="pokemon-label">
+            <span>{{ pokemon.name_jpn }}</span>
+          </div>
           <button
             class="reset-party-member-button"
             nz-button
             nzSize="small"
             nzShape="circle"
             (click)="resetPartyMember(partyIndex)"
-            title="Clear matches"
+            title="入力をリセット"
           >
-            <i nz-icon nzType="clear" nzTheme="outline"></i>
+            <i class="icon fas fa-eraser"></i>
           </button>
         </div>
       </div>
@@ -30,18 +32,20 @@
         [class.row-odd]="odd"
       >
         <div class="header-column enemy">
-          <app-pokeicon [pokemon]="enemy.pokemon" [height]="32"></app-pokeicon>
           <app-pokeselect [value]="enemy.pokemon" (valueChange)="changeEnemyPokemon(enemyIndex, $event)"></app-pokeselect>
+          <div class="pokemon-label">
+            <span>{{ enemy.pokemon.name_jpn }}</span>
+          </div>
           <button
             class="remove-button"
             nz-button
             nzSize="small"
             nzShape="circle"
             (click)="removeEnemy(enemyIndex)"
-            *ngIf="enemyIndex !== 0"
-            title="Clear this enemy"
+            *ngIf="matchTable.enemies.length > 1"
+            title="仮想敵を削除"
           >
-            <i nz-icon nzType="close" nzTheme="outline"></i>
+            <i class="icon fas fa-times"></i>
           </button>
         </div>
         <div class="table-cell match" *ngFor="let match of enemy.matches; index as matchIndex">
@@ -50,8 +54,8 @@
       </div>
       <div class="match-table-row">
         <div class="table-cell">
-          <button nz-button nzType="default" nzShape="circle" (click)="addEnemy()">
-            <i nz-icon nzType="plus" nzTheme="outline"></i>
+          <button nz-button nzType="default" (click)="addEnemy()">
+            仮想敵を追加する
           </button>
         </div>
       </div>

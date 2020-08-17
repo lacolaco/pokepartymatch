@@ -14,6 +14,9 @@ export class PokeiconComponent {
   @Input()
   height = 56;
 
+  @Input()
+  lazy = true;
+
   get width(): number {
     return (68 / 56) * this.height;
   }

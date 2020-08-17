@@ -1,12 +1,31 @@
-<ng-container *ngIf="selectOptions$ | ngrxPush as selectOptions">
-  <nz-select
-    nzShowSearch
-    nzServerSearch
-    [ngModel]="value.key"
-    (ngModelChange)="onSelect($event)"
-    [nzOptions]="selectOptions"
-    [nzDropdownMatchSelectWidth]="false"
-    (nzOnSearch)="onSearchChange($event)"
-  >
-  </nz-select>
+<ng-container *ngIf="state$ | ngrxPush as state">
+  <button class="trigger" nz-popover [nzPopoverContent]="pokepicker" [nzPopoverTrigger]="'click'">
+    <app-pokeicon [pokemon]="value" [height]="48"></app-pokeicon>
+    <i class="icon fas fa-pen"></i>
+  </button>
+
+  <ng-template #pokepicker>
+    <div cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+      <input tabindex="0" placeholder="名前で検索（かな/カナ/ローマ字）" nz-input (input)="onSearchChange($any($event.target).value)" />
+
+      <div class="pokepicker-container">
+        <cdk-virtual-scroll-viewport class="virtual-scroller" [itemSize]="48">
+          <div class="pokepicker">
+            <div class="pikepicker-row" *cdkVirtualFor="let rowIndex of state.pokemonsRowRange">
+              <ng-container *ngFor="let colIndex of [0, 1, 2, 3]">
+                <button
+                  tabindex="0"
+                  *ngIf="state.pokemons[rowIndex + colIndex] as pokemon"
+                  class="pikepicker-iconbtn"
+                  (click)="selectPokemon(pokemon)"
+                >
+                  <app-pokeicon [pokemon]="pokemon" [height]="48"></app-pokeicon>
+                </button>
+              </ng-container>
+            </div>
+          </div>
+        </cdk-virtual-scroll-viewport>
+      </div>
+    </div>
+  </ng-template>
 </ng-container>

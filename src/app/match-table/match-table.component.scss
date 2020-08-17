@@ -3,9 +3,13 @@
   width: 100%;
 }
 
-$columnWidth: 144px;
+$columnWidth: 128px;
 $headerColumnWidth: 200px;
-$headerRowHeight: 96px;
+$headerRowHeight: 84px;
+
+.icon {
+  color: #7d7d7d;
+}
 
 .match-table {
   display: flex;
@@ -78,6 +82,19 @@ $headerRowHeight: 96px;
   align-items: center;
   position: relative;
 
+  > app-pokeselect {
+    margin: 4px;
+  }
+
+  .pokemon-label {
+    flex: 1 1 auto;
+    font-size: 0.8rem;
+    line-height: 1;
+    font-weight: 600;
+    text-align: center;
+    word-break: keep-all;
+  }
+
   .reset-party-member-button {
     position: absolute;
     right: 0;
@@ -91,7 +108,14 @@ $headerRowHeight: 96px;
   align-items: center;
 
   > app-pokeselect {
-    width: 128px;
-    margin-right: 4px;
+    width: 58px;
+    margin: 4px;
+  }
+
+  .pokemon-label {
+    flex: 1 1 auto;
+    font-size: 0.8rem;
+    font-weight: 600;
+    word-break: keep-all;
   }
 }
