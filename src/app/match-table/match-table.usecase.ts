@@ -6,6 +6,7 @@ import { MatchTable } from '../domain/match-table';
 import { findPokemon, Pokemon } from '../domain/pokemon';
 import { MatchTableStore } from './match-table.store';
 
+// TODO: migrate name to "pokepartymatch"
 const localStorageMatchTableKey = 'pokemonbuild.matchTable.v1.1';
 
 @Injectable()
