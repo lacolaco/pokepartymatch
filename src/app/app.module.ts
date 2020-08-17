@@ -1,3 +1,5 @@
+import { A11yModule } from '@angular/cdk/a11y';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { registerLocaleData } from '@angular/common';
 import ja from '@angular/common/locales/ja';
 import { NgModule } from '@angular/core';
@@ -8,12 +10,11 @@ import { AngularFirePerformanceModule } from '@angular/fire/performance';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ClearOutline, CloseOutline, PlusOutline } from '@ant-design/icons-angular/icons';
 import { ReactiveComponentModule } from '@ngrx/component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { ja_JP, NZ_I18N } from 'ng-zorro-antd/i18n';
-import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
@@ -30,10 +31,12 @@ registerLocaleData(ja);
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveComponentModule,
-    NzSelectModule,
-    NzIconModule.forRoot([CloseOutline, PlusOutline, ClearOutline]),
+    NzInputModule,
     NzButtonModule,
     NzTypographyModule,
+    NzPopoverModule,
+    A11yModule,
+    ScrollingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAnalyticsModule,
