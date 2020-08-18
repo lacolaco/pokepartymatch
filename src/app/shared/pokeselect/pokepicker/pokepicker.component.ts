@@ -120,7 +120,7 @@ export class PokepickerComponent implements OnDestroy, AfterViewInit {
       if (index % rowSize !== 0) {
         return rows;
       }
-      return rows.concat(pokemons.slice(index, index + rowSize));
+      return [...rows, pokemons.slice(index, index + rowSize)];
     }, [] as Array<Pokemon[]>);
   }
 }
