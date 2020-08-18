@@ -1,0 +1,24 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.virtual-scroller {
+  width: 100%;
+  height: 100%;
+}
+
+.pokepicker {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .pokepicker-item {
+    box-sizing: border-box;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+}

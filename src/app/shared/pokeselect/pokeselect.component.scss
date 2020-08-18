@@ -30,25 +30,15 @@ button {
   }
 }
 
-.pokepicker-container {
-  width: 240px;
-  height: 300px;
-  overflow: auto;
-}
-
-.virtual-scroller {
-  width: 100%;
-  height: 100%;
+.search-input {
+  margin-bottom: 4px;
 }
 
 .pokepicker {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  width: 240px;
+  height: 300px;
+}
 
-  .pikepicker-iconbtn {
-    background: transparent;
-    border: none;
-    padding: 0;
-  }
+.description {
+  font-size: 0.8rem;
 }

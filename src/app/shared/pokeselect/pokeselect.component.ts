@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
 import { debounceTime, map, takeUntil } from 'rxjs/operators';
 import { pokemons } from '../../data/pokemon-data';
 import { Pokemon } from '../../domain/pokemon';
+import { PokepickerComponent } from './pokepicker/pokepicker.component';
 
 @Component({
   selector: 'app-pokeselect',
@@ -16,6 +17,8 @@ export class PokeselectComponent implements OnInit, OnDestroy {
 
   @Output()
   valueChange = new EventEmitter<Pokemon>();
+
+  @ViewChild(PokepickerComponent) pokepicker!: PokepickerComponent;
 
   readonly filteredPokemons$ = new BehaviorSubject<Pokemon[]>(pokemons);
 
@@ -52,12 +55,13 @@ export class PokeselectComponent implements OnInit, OnDestroy {
     this.onDestroy$.next();
   }
 
-  onSearchChange(search: string): void {
-    this.searchInput$.next(search.toLowerCase());
+  moveFocusToPokepicker(event: Event): void {
+    event.preventDefault();
+    this.pokepicker.focus();
   }
 
-  trackByPokemonKey(index: number, value: Pokemon): string {
-    return value.key;
+  onSearchChange(search: string): void {
+    this.searchInput$.next(search.toLowerCase());
   }
 
   selectPokemon(pokemon: Pokemon): void {

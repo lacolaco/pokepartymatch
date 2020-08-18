@@ -6,25 +6,20 @@
 
   <ng-template #pokepicker>
     <div cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
-      <input tabindex="0" placeholder="名前で検索（かな/カナ/ローマ字）" nz-input (input)="onSearchChange($any($event.target).value)" />
+      <input
+        class="search-input"
+        tabindex="0"
+        placeholder="名前で検索（かな/カナ/ローマ字）"
+        nz-input
+        (input)="onSearchChange($any($event.target).value)"
+        (keydown.tab)="moveFocusToPokepicker($event)"
+        (keydown.arrowdown)="moveFocusToPokepicker($event)"
+      />
 
-      <div class="pokepicker-container">
-        <cdk-virtual-scroll-viewport class="virtual-scroller" [itemSize]="48">
-          <div class="pokepicker">
-            <div class="pikepicker-row" *cdkVirtualFor="let rowIndex of state.pokemonsRowRange">
-              <ng-container *ngFor="let colIndex of [0, 1, 2, 3]">
-                <button
-                  tabindex="0"
-                  *ngIf="state.pokemons[rowIndex + colIndex] as pokemon"
-                  class="pikepicker-iconbtn"
-                  (click)="selectPokemon(pokemon)"
-                >
-                  <app-pokeicon [pokemon]="pokemon" [height]="48"></app-pokeicon>
-                </button>
-              </ng-container>
-            </div>
-          </div>
-        </cdk-virtual-scroll-viewport>
+      <app-pokepicker class="pokepicker" [pokemons]="state.pokemons" (selectPokemon)="selectPokemon($event)"></app-pokepicker>
+
+      <div class="description">
+        <span nz-typography nzType="secondary">矢印キーで移動 / Enterキーで確定</span>
       </div>
     </div>
   </ng-template>
