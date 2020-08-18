@@ -8,9 +8,7 @@
           *ngFor="let pokemon of matchTable.party.members; trackBy: trackByForPartyMember; index as partyIndex"
         >
           <app-pokeselect [value]="pokemon" (valueChange)="changePartyPokemon(partyIndex, $event)"></app-pokeselect>
-          <div class="pokemon-label">
-            <span>{{ pokemon.name_jpn }}</span>
-          </div>
+          <app-pokelabel class="pokemon-label" [pokemon]="pokemon"></app-pokelabel>
           <button
             class="reset-party-member-button"
             nz-button
@@ -33,9 +31,7 @@
       >
         <div class="header-column enemy">
           <app-pokeselect [value]="enemy.pokemon" (valueChange)="changeEnemyPokemon(enemyIndex, $event)"></app-pokeselect>
-          <div class="pokemon-label">
-            <span>{{ enemy.pokemon.name_jpn }}</span>
-          </div>
+          <app-pokelabel class="pokemon-label" [pokemon]="enemy.pokemon"></app-pokelabel>
           <button
             class="remove-button"
             nz-button
