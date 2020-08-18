@@ -17,6 +17,10 @@ export class PokeiconComponent {
   @Input()
   lazy = true;
 
+  get imageUrl(): string {
+    return `/assets/pokemon-gen8/regular/${this.pokemon.slug}.png`;
+  }
+
   get width(): number {
     return (68 / 56) * this.height;
   }

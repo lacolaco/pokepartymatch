@@ -1,13 +1,8 @@
 <cdk-virtual-scroll-viewport class="virtual-scroller" [itemSize]="48">
   <div class="pokepicker">
-    <div class="pikepicker-row" *cdkVirtualFor="let rowIndex of rowRange">
-      <ng-container *ngFor="let colIndex of columnRange">
-        <button
-          *ngIf="pokemons[rowIndex + colIndex] as pokemon"
-          [pokepickerItem]="pokemon"
-          [active]="isActiveItem(pokemon)"
-          (click)="selectPokemon.emit(pokemon)"
-        >
+    <div class="pokepicker-row" *cdkVirtualFor="let row of pokemonRows">
+      <ng-container *ngFor="let pokemon of row">
+        <button [pokepickerItem]="pokemon" [active]="pokemon.key === activePokemonKey" (click)="selectPokemon.emit(pokemon)">
           <app-pokeicon [pokemon]="pokemon" [height]="48"></app-pokeicon>
         </button>
       </ng-container>

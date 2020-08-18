@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
-import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
-import { debounceTime, map, takeUntil } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map, throttleTime } from 'rxjs/operators';
 import { pokemons } from '../../data/pokemon-data';
 import { Pokemon } from '../../domain/pokemon';
 import { PokepickerComponent } from './pokepicker/pokepicker.component';
@@ -11,48 +11,44 @@ import { PokepickerComponent } from './pokepicker/pokepicker.component';
   styleUrls: ['./pokeselect.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PokeselectComponent implements OnInit, OnDestroy {
+export class PokeselectComponent implements OnInit {
   @Input()
   value!: Pokemon;
+
+  @Input()
+  pickerPosition: 'bottom' | 'right' = 'bottom';
 
   @Output()
   valueChange = new EventEmitter<Pokemon>();
 
   @ViewChild(PokepickerComponent) pokepicker!: PokepickerComponent;
 
-  readonly filteredPokemons$ = new BehaviorSubject<Pokemon[]>(pokemons);
+  private readonly searchInput$ = new BehaviorSubject<string>('');
 
-  readonly state$ = combineLatest([this.filteredPokemons$]).pipe(
-    map(([filteredPokemons]) => ({
-      pokemons: filteredPokemons,
-      pokemonsRowRange: filteredPokemons.map((_, index) => index).filter((_, index) => index % 4 === 0),
-    }))
+  readonly state$: Observable<{ pokemons: Pokemon[]; pokemonsRowRange: number[] }> = combineLatest([
+    this.searchInput$.pipe(
+      throttleTime(200),
+      map((search) => {
+        if (!search) {
+          return pokemons;
+        }
+        return pokemons.filter((p) => p.names.some((name) => name.includes(search)));
+      })
+    ),
+  ]).pipe(
+    map(([filteredPokemons]) => {
+      return {
+        pokemons: filteredPokemons,
+        pokemonsRowRange: filteredPokemons.map((_, index) => index).filter((_, index) => index % 4 === 0),
+      };
+    })
   );
-
-  private readonly searchInput$ = new Subject<string>();
-
-  private readonly onDestroy$ = new Subject();
 
   ngOnInit(): void {
     if (!this.value) {
       this.value = pokemons[0];
       this.valueChange.emit(this.value);
     }
-
-    this.searchInput$.pipe(takeUntil(this.onDestroy$), debounceTime(200)).subscribe((search) => {
-      this.filteredPokemons$.next(
-        pokemons.filter((p) => {
-          if (search.trim().length === 0) {
-            return true;
-          }
-          return p.names.some((name) => name.includes(search));
-        })
-      );
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.onDestroy$.next();
   }
 
   moveFocusToPokepicker(event: Event): void {

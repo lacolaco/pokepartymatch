@@ -1,20 +1,23 @@
 import { FocusKeyManager, ListKeyManager } from '@angular/cdk/a11y';
-import { DOWN_ARROW, ENTER, TAB, UP_ARROW } from '@angular/cdk/keycodes';
+import { DOWN_ARROW, ENTER, UP_ARROW } from '@angular/cdk/keycodes';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
+  OnDestroy,
   Output,
   QueryList,
   ViewChildren,
-  ChangeDetectorRef,
-  OnChanges,
-  SimpleChanges,
 } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil, debounceTime } from 'rxjs/operators';
 import { Pokemon } from 'src/app/domain/pokemon';
 import { PokepickerItemDirective } from './pokepicker-item.directive';
+
+const rowSize = 4;
 
 @Component({
   selector: 'app-pokepicker',
@@ -26,51 +29,42 @@ import { PokepickerItemDirective } from './pokepicker-item.directive';
     '(keydown)': 'onPokepickerKeydown($event)',
   },
 })
-export class PokepickerComponent implements OnChanges, AfterViewInit {
+export class PokepickerComponent implements OnDestroy, AfterViewInit {
+  private keyManager!: ListKeyManager<PokepickerItemDirective>;
+
+  private readonly onDestroy$ = new Subject();
+
+  pokemonRows: Array<Pokemon[]> = [];
+
   @Input()
-  pokemons!: Pokemon[];
+  set pokemons(value: Pokemon[]) {
+    this.resetPokemons(value);
+  }
 
   @Output()
   selectPokemon = new EventEmitter<Pokemon>();
 
   @ViewChildren(PokepickerItemDirective) items!: QueryList<PokepickerItemDirective>;
 
-  private keyManager!: ListKeyManager<PokepickerItemDirective>;
-
-  get columnRange(): number[] {
-    return [0, 1, 2, 3];
-  }
-
-  get rowRange(): number[] {
-    return this.pokemons.map((_, i) => i).filter((i) => i % this.columnRange.length === 0);
+  get activePokemonKey(): string | null {
+    return this.keyManager?.activeItem?.pokemon.key ?? null;
   }
 
   constructor(private readonly cdRef: ChangeDetectorRef) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if ('pokemons' in changes) {
-      if (this.keyManager) {
-        this.keyManager.setActiveItem(-1);
-      }
-    }
-  }
-
   ngAfterViewInit(): void {
     this.keyManager = new FocusKeyManager(this.items).withHorizontalOrientation('ltr').withWrap();
-    this.keyManager.change.subscribe(() => {
+    this.keyManager.change.pipe(takeUntil(this.onDestroy$), debounceTime(100)).subscribe(() => {
       this.cdRef.markForCheck();
     });
   }
 
-  isActiveItem(pokemon: Pokemon): boolean {
-    if (!this.keyManager || this.keyManager.activeItem === null) {
-      return false;
-    }
-    return this.keyManager.activeItem.pokemon.key === pokemon.key;
+  ngOnDestroy(): void {
+    this.onDestroy$.next();
   }
 
   focus(): void {
-    if (this.keyManager.activeItem == null) {
+    if (this.keyManager.activeItem === null) {
       this.keyManager.setFirstItemActive();
     } else {
       this.keyManager.activeItem.focus();
@@ -100,16 +94,14 @@ export class PokepickerComponent implements OnChanges, AfterViewInit {
       case UP_ARROW: {
         event.preventDefault();
         if (this.keyManager.activeItemIndex !== null) {
-          moveVerticalFocus(this.keyManager.activeItemIndex, -this.columnRange.length);
-          // this.cdRef.markForCheck();
+          moveVerticalFocus(this.keyManager.activeItemIndex, -rowSize);
         }
         return;
       }
       case DOWN_ARROW: {
         event.preventDefault();
         if (this.keyManager.activeItemIndex !== null) {
-          moveVerticalFocus(this.keyManager.activeItemIndex, this.columnRange.length);
-          // this.cdRef.markForCheck();
+          moveVerticalFocus(this.keyManager.activeItemIndex, rowSize);
         }
         return;
       }
@@ -117,5 +109,18 @@ export class PokepickerComponent implements OnChanges, AfterViewInit {
         this.keyManager.onKeydown(event);
       }
     }
+  }
+
+  private resetPokemons(pokemons: Pokemon[]): void {
+    if (this.keyManager) {
+      this.keyManager.setActiveItem(-1);
+    }
+
+    this.pokemonRows = pokemons.reduce((rows, _, index) => {
+      if (index % rowSize !== 0) {
+        return rows;
+      }
+      return rows.concat(pokemons.slice(index, index + rowSize));
+    }, [] as Array<Pokemon[]>);
   }
 }

@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, NgZone } from '@angular/core';
 import { FocusableOption } from '@angular/cdk/a11y';
 import { Pokemon } from 'src/app/domain/pokemon';
 
@@ -21,9 +21,11 @@ export class PokepickerItemDirective implements FocusableOption {
 
   disabled?: boolean | undefined;
 
-  constructor(private readonly elRef: ElementRef<HTMLElement>) {}
+  constructor(private readonly elRef: ElementRef<HTMLElement>, private readonly ngZone: NgZone) {}
 
   focus(origin?: 'touch' | 'mouse' | 'keyboard' | 'program' | null | undefined): void {
-    this.elRef.nativeElement.focus();
+    this.ngZone.runOutsideAngular(() => {
+      this.elRef.nativeElement.focus();
+    });
   }
 }

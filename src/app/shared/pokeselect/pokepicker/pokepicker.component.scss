@@ -20,5 +20,13 @@
     background: transparent;
     border: none;
     padding: 0;
+    cursor: pointer;
+
+    &:hover,
+    &.active {
+      outline: none;
+      border-radius: 4px;
+      background: #c0c0c0;
+    }
   }
 }
