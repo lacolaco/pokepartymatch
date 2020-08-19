@@ -50,7 +50,10 @@ $headerRowHeight: 84px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #fff;
   border-bottom: 1px solid #000;
 }
 
