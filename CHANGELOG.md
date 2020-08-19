@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.3](https://github.com/lacolaco/pokepartymatch/compare/v1.4.2...v1.4.3) (2020-08-19)
+
+
+### Bug Fixes
+
+* **match-table:** always create with new array instance ([fe46220](https://github.com/lacolaco/pokepartymatch/commit/fe46220b7737a3ff85ec5eddac3b4fd1bcf79712))
+
 ### [1.4.2](https://github.com/lacolaco/pokepartymatch/compare/v1.4.1...v1.4.2) (2020-08-19)
 
 
