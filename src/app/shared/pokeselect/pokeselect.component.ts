@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { map, throttleTime } from 'rxjs/operators';
+import { debounceTime, map } from 'rxjs/operators';
 import { pokemons } from '../../data/pokemon-data';
 import { Pokemon } from '../../domain/pokemon';
 import { PokepickerComponent } from './pokepicker/pokepicker.component';
@@ -27,7 +27,7 @@ export class PokeselectComponent implements OnInit {
 
   readonly state$: Observable<{ pokemons: Pokemon[]; pokemonsRowRange: number[] }> = combineLatest([
     this.searchInput$.pipe(
-      throttleTime(200),
+      debounceTime(200),
       map((search) => {
         if (!search) {
           return pokemons;
