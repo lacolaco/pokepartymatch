@@ -4,8 +4,11 @@
 }
 
 .header {
+  width: 900px;
+  margin: auto;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
   padding: 16px 16px 0px;
 
@@ -14,8 +17,16 @@
   }
 }
 
+.column {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 footer {
-  padding: 16px 16px 0px;
+  width: 900px;
+  margin: auto;
+  padding: 16px 16px 16px;
 }
 
 .version {
