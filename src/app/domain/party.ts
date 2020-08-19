@@ -1,5 +1,5 @@
 import { Pokemon, findPokemon, PokemonJSON, toSerializablePokemonJSON } from './pokemon';
-import { Serializable } from '../utils/serializable';
+import { Serializable } from './utils/serializable';
 
 export type PartyJSON = { members: Array<PokemonJSON> };
 

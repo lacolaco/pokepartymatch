@@ -1,5 +1,5 @@
 import { PokemonJSON, Pokemon, toSerializablePokemonJSON, fromPokemonJSON } from './pokemon';
-import { Serializable } from '../utils/serializable';
+import { Serializable } from './utils/serializable';
 
 export type MatchValue = 'win' | 'loss' | null;
 

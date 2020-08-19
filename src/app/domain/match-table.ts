@@ -1,4 +1,4 @@
-import { Serializable } from '../utils/serializable';
+import { Serializable } from './utils/serializable';
 import { Enemy, EnemyJSON, MatchValue } from './enemy';
 import { Party, PartyJSON } from './party';
 import { Pokemon } from './pokemon';
