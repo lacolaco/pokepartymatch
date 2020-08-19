@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { faEraser, faPen, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faEraser, faPen, faTimes, faGripLinesVertical } from '@fortawesome/free-solid-svg-icons';
 import { VERSION } from './version';
 
 @Component({
@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   readonly version = VERSION;
 
   ngOnInit(): void {
-    library.add(faEraser, faPen, faTimes);
+    library.add(faEraser, faPen, faTimes, faGripLinesVertical);
     dom.watch();
   }
 }

@@ -4,28 +4,17 @@ import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirePerformanceModule } from '@angular/fire/performance';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveComponentModule } from '@ngrx/component';
-import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
-import { MatchTableComponent } from './match-table/match-table.component';
-import { MatchInputModule } from './shared/match-input/match-input.module';
-import { PokeiconModule } from './shared/pokeicon/pokeicon.module';
-import { PokeselectModule } from './shared/pokeselect/pokeselect.module';
-import { PokelabelModule } from './shared/pokelabel/pokelabel.module';
+import { MatchTableModule } from './match-table/match-table.module';
 
 @NgModule({
-  declarations: [AppComponent, MatchTableComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ReactiveComponentModule,
-    PokeiconModule,
-    PokeselectModule,
-    MatchInputModule,
-    PokelabelModule,
-    NzButtonModule,
+    MatchTableModule,
     NzTypographyModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAnalyticsModule,

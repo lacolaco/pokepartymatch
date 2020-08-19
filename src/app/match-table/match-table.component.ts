@@ -5,6 +5,7 @@ import { MatchTable } from '../domain/match-table';
 import { Pokemon } from '../domain/pokemon';
 import { MatchTableStore } from './match-table.store';
 import { MatchTableUsecase } from './match-table.usecase';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-match-table',
@@ -27,6 +28,11 @@ export class MatchTableComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.onDestroy$.next();
+  }
+
+  onEnemyRowDrop(event: CdkDragDrop<unknown[]>): void {
+    console.log(event);
+    this.usecase.sortEnemy(event.previousIndex, event.currentIndex);
   }
 
   addEnemy(): void {
