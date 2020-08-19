@@ -16,7 +16,7 @@ export class Enemy implements Serializable {
   private constructor(public readonly pokemon: Pokemon, public readonly matches: Matches) {}
 
   static create({ pokemon, matches }: { pokemon: Pokemon; matches?: Matches }): Enemy {
-    return new Enemy(pokemon, matches ?? emptyMatches);
+    return new Enemy(pokemon, matches ?? [...emptyMatches]);
   }
 
   // tslint:disable-next-line: no-any
