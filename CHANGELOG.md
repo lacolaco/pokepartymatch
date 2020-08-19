@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/lacolaco/pokepartymatch/compare/v1.4.0...v1.4.1) (2020-08-19)
+
+
+### Bug Fixes
+
+* **match-table:** track by enemy ref ([94c1b04](https://github.com/lacolaco/pokepartymatch/commit/94c1b047d42d2a2b8482218c5dfcba8d1501d7ec))
+
 ## [1.4.0](https://github.com/lacolaco/pokepartymatch/compare/v1.3.2...v1.4.0) (2020-08-19)
 
 
