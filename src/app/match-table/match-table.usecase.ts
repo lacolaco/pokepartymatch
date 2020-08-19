@@ -71,13 +71,7 @@ export class MatchTableUsecase implements OnDestroy {
   changeEnemyPokemon(index: number, pokemon: Pokemon): void {
     this.store.update((state) => ({
       ...state,
-      matchTable: state.matchTable.setEnemy(
-        index,
-        Enemy.create({
-          pokemon,
-          matches: state.matchTable.enemies[index].matches,
-        })
-      ),
+      matchTable: state.matchTable.setEnemy(index, Enemy.create({ pokemon })),
     }));
   }
 

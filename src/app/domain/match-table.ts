@@ -15,12 +15,14 @@ export class MatchTable implements Serializable {
     return new MatchTable(party, enemies);
   }
 
-  // tslint:disable-next-line: no-any
   static fromJSON(json: MatchTableJSON): MatchTable {
     return new MatchTable(Party.fromJSON(json.party), json.enemies.map(Enemy.fromJSON));
   }
 
-  // tslint:disable-next-line: no-any
+  clone({ party, enemies }: { party?: Party; enemies?: Enemy[] }): MatchTable {
+    return MatchTable.create({ party: party ?? this.party, enemies: enemies ?? this.enemies });
+  }
+
   toSerializable(): MatchTableJSON {
     return {
       party: this.party.toSerializable(),
@@ -29,45 +31,39 @@ export class MatchTable implements Serializable {
   }
 
   setPartyMember(index: number, pokemon: Pokemon): MatchTable {
-    return MatchTable.create({
+    return this.clone({
       party: this.party.setMember(index, pokemon),
-      enemies: this.enemies,
     });
   }
 
   resetMatchesByPartyMemberIndex(partyMemberIndex: number): MatchTable {
-    return MatchTable.create({
-      party: this.party,
+    return this.clone({
       enemies: this.enemies.map((e) => e.setMatch(partyMemberIndex, null)),
     });
   }
 
   addEnemy(enemy: Enemy): MatchTable {
-    return MatchTable.create({
-      party: this.party,
+    return this.clone({
       enemies: [...this.enemies, enemy],
     });
   }
 
   setEnemy(enemyIndex: number, enemy: Enemy): MatchTable {
     this.enemies[enemyIndex] = enemy;
-    return MatchTable.create({
-      party: this.party,
+    return this.clone({
       enemies: [...this.enemies],
     });
   }
 
   removeEnemy(index: number): MatchTable {
-    return MatchTable.create({
-      party: this.party,
+    return this.clone({
       enemies: this.enemies.filter((_, i) => i !== index),
     });
   }
 
   setMatch(enemyIndex: number, matchIndex: number, match: MatchValue): MatchTable {
     this.enemies[enemyIndex] = this.enemies[enemyIndex].setMatch(matchIndex, match);
-    return MatchTable.create({
-      party: this.party,
+    return this.clone({
       enemies: [...this.enemies],
     });
   }

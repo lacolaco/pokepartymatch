@@ -31,7 +31,6 @@ export class MatchTableComponent implements OnInit, OnDestroy {
   }
 
   onEnemyRowDrop(event: CdkDragDrop<unknown[]>): void {
-    console.log(event);
     this.usecase.sortEnemy(event.previousIndex, event.currentIndex);
   }
 

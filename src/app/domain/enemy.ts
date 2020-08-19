@@ -5,7 +5,7 @@ export type MatchValue = 'win' | 'loss' | null;
 
 export type Matches = MatchValue[];
 
-const emptyMatches: Matches = [null, null, null, null, null, null];
+const createEmptyMatches = (): Matches => [null, null, null, null, null, null];
 
 export type EnemyJSON = {
   pokemon: PokemonJSON;
@@ -13,13 +13,12 @@ export type EnemyJSON = {
 };
 
 export class Enemy implements Serializable {
-  private constructor(public readonly pokemon: Pokemon, public readonly matches: Matches) {}
+  private constructor(public readonly pokemon: Pokemon, public matches: Matches) {}
 
   static create({ pokemon, matches }: { pokemon: Pokemon; matches?: Matches }): Enemy {
-    return new Enemy(pokemon, matches ?? [...emptyMatches]);
+    return new Enemy(pokemon, matches ?? createEmptyMatches());
   }
 
-  // tslint:disable-next-line: no-any
   static fromJSON(enemy: EnemyJSON): Enemy {
     if (enemy.pokemon == null || !Array.isArray(enemy.matches)) {
       throw new Error('enemy is not valid.');
@@ -40,9 +39,6 @@ export class Enemy implements Serializable {
 
   setMatch(index: number, match: MatchValue): Enemy {
     this.matches[index] = match;
-    return Enemy.create({
-      pokemon: this.pokemon,
-      matches: [...this.matches],
-    });
+    return this;
   }
 }

@@ -4,7 +4,7 @@ import { Serializable } from './utils/serializable';
 export type PartyJSON = { members: Array<PokemonJSON> };
 
 export class Party implements Serializable {
-  private constructor(public readonly members: Pokemon[]) {
+  private constructor(public members: Pokemon[]) {
     this.members = members;
   }
 
@@ -12,7 +12,6 @@ export class Party implements Serializable {
     return new Party(members);
   }
 
-  // tslint:disable-next-line: no-any
   static fromJSON(json: PartyJSON): Party {
     if (json == null) {
       throw new Error('Unexpected value');
@@ -40,6 +39,6 @@ export class Party implements Serializable {
 
   setMember(index: number, pokemon: Pokemon): Party {
     this.members[index] = pokemon;
-    return new Party([...this.members]);
+    return this;
   }
 }
