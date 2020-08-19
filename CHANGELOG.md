@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.2](https://github.com/lacolaco/pokepartymatch/compare/v1.4.1...v1.4.2) (2020-08-19)
+
+
+### Bug Fixes
+
+* **match-table:** widen header column width for sort grip ([9236a5d](https://github.com/lacolaco/pokepartymatch/commit/9236a5dca6a6564cb5cffca2f95614fdb300a874))
+
 ### [1.4.1](https://github.com/lacolaco/pokepartymatch/compare/v1.4.0...v1.4.1) (2020-08-19)
 
 
