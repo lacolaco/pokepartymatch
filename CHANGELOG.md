@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/lacolaco/pokepartymatch/compare/v1.2.2...v1.3.0) (2020-08-19)
+
+
+### Features
+
+* **match-table:** sticky header ([4cb0e21](https://github.com/lacolaco/pokepartymatch/commit/4cb0e211a489e305584b9c9c1b7d12a5d97e6fe5))
+
 ### [1.2.2](https://github.com/lacolaco/pokepartymatch/compare/v1.2.1...v1.2.2) (2020-08-19)
 
 
