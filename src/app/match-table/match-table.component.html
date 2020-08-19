@@ -34,10 +34,10 @@
         [class.row-odd]="odd"
         cdkDrag
       >
-        <div class="sort-grip" cdkDragHandle>
-          <i class="fas fa-grip-lines-vertical"></i>
-        </div>
         <div class="header-column enemy">
+          <div class="sort-grip" cdkDragHandle>
+            <i class="fas fa-grip-lines-vertical"></i>
+          </div>
           <app-pokeselect
             [value]="enemy.pokemon"
             [pickerPosition]="'right'"
