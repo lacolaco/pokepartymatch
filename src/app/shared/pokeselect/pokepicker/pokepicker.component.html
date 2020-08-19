@@ -2,7 +2,12 @@
   <div class="pokepicker">
     <div class="pokepicker-row" *cdkVirtualFor="let row of pokemonRows">
       <ng-container *ngFor="let pokemon of row">
-        <button [pokepickerItem]="pokemon" [active]="pokemon.key === activePokemonKey" (click)="selectPokemon.emit(pokemon)">
+        <button
+          title="{{ pokemon.name_jpn }}"
+          [pokepickerItem]="pokemon"
+          [active]="pokemon.key === activePokemonKey"
+          (click)="selectPokemon.emit(pokemon)"
+        >
           <app-pokeicon [pokemon]="pokemon" [height]="48"></app-pokeicon>
         </button>
       </ng-container>
