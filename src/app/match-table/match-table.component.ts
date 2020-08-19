@@ -63,7 +63,7 @@ export class MatchTableComponent implements OnInit, OnDestroy {
     return `${index}:${item.key}`;
   }
 
-  trackByForEmemies(index: number, item: Enemy): string {
-    return `${index}:${item.pokemon.key}`;
+  trackByForEmemies(_: number, item: Enemy): Enemy {
+    return item;
   }
 }
