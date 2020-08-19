@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.2](https://github.com/lacolaco/pokepartymatch/compare/v1.3.1...v1.3.2) (2020-08-19)
+
+
+### Bug Fixes
+
+* **pokeselect:** show tooltip ([577ced0](https://github.com/lacolaco/pokepartymatch/commit/577ced071b1f996eefdd17d77c187080d6d5b046))
+* **pokeselect:** use debounce ([c5a6daa](https://github.com/lacolaco/pokepartymatch/commit/c5a6daa66d35fbc6389141a294032caf07203cf0))
+
 ### [1.3.1](https://github.com/lacolaco/pokepartymatch/compare/v1.3.0...v1.3.1) (2020-08-19)
 
 
