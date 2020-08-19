@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/lacolaco/pokepartymatch/compare/v1.2.0...v1.2.1) (2020-08-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency pokesprite-images to v2.2.5 ([#29](https://github.com/lacolaco/pokepartymatch/issues/29)) ([7c86fd7](https://github.com/lacolaco/pokepartymatch/commit/7c86fd749154f03c552ba52432ab19f9d851d12c))
+* **style:** centerize UI ([31c5169](https://github.com/lacolaco/pokepartymatch/commit/31c516921d9565697ad4eb346875e4b9ebef3592))
+
 ## [1.2.0](https://github.com/lacolaco/pokepartymatch/compare/v1.1.2...v1.2.0) (2020-08-19)
 
 
