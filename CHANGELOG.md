@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/lacolaco/pokepartymatch/compare/v1.1.2...v1.2.0) (2020-08-19)
+
+
+### Features
+
+* **app:** improve pokeselect UI ([#26](https://github.com/lacolaco/pokepartymatch/issues/26)) ([390c309](https://github.com/lacolaco/pokepartymatch/commit/390c309c1c9eafe067e8380cce77bb3642195881))
+* **app:** show app version ([e38fa85](https://github.com/lacolaco/pokepartymatch/commit/e38fa85853dae3476c9c29e7b99c12e450f1e231))
+* **pokeselect:** support key events ([3a89d01](https://github.com/lacolaco/pokepartymatch/commit/3a89d01d06c1debc5cb760a6eeeb3fa7c921f5f5))
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([#27](https://github.com/lacolaco/pokepartymatch/issues/27)) ([3b38ef9](https://github.com/lacolaco/pokepartymatch/commit/3b38ef97b509d747c504180f88a32f911b5b5999))
+* **pokeselect:** fix reducing process ([2d6083a](https://github.com/lacolaco/pokepartymatch/commit/2d6083afeb3ffb0627c486d8f01e0a2c977eca74))
+
 ### [1.1.2](https://github.com/lacolaco/pokepartymatch/compare/v1.1.1...v1.1.2) (2020-08-16)
 
 
