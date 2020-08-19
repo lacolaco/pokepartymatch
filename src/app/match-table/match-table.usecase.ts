@@ -5,6 +5,7 @@ import { Enemy, MatchValue } from '../domain/enemy';
 import { MatchTable } from '../domain/match-table';
 import { findPokemon, Pokemon } from '../domain/pokemon';
 import { MatchTableStore } from './match-table.store';
+import { moveItemInArray } from '@angular/cdk/drag-drop';
 
 // TODO: migrate name to "pokepartymatch"
 const localStorageMatchTableKey = 'pokemonbuild.matchTable.v1.1';
@@ -38,6 +39,15 @@ export class MatchTableUsecase implements OnDestroy {
         const json = JSON.stringify(table.toSerializable());
         localStorage.setItem(localStorageMatchTableKey, json);
       });
+  }
+
+  sortEnemy(from: number, to: number): void {
+    const enemies = [...this.store.value.matchTable.enemies];
+    moveItemInArray(enemies, from, to);
+    this.store.update((state) => ({
+      ...state,
+      matchTable: MatchTable.create({ party: state.matchTable.party, enemies }),
+    }));
   }
 
   addEnemy(): void {

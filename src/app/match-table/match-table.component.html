@@ -26,13 +26,17 @@
         </div>
       </div>
     </div>
-    <div class="match-table-body">
+    <div class="match-table-body" cdkDropList (cdkDropListDropped)="onEnemyRowDrop($event)">
       <div
         *ngFor="let enemy of matchTable.enemies; trackBy: trackByForEmemies; index as enemyIndex; odd as odd"
         class="match-table-row"
         [class.has-no-win-match]="enemy.hasNoWinMatch"
         [class.row-odd]="odd"
+        cdkDrag
       >
+        <div class="sort-grip" cdkDragHandle>
+          <i class="fas fa-grip-lines-vertical"></i>
+        </div>
         <div class="header-column enemy">
           <app-pokeselect
             [value]="enemy.pokemon"
