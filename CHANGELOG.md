@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/lacolaco/pokepartymatch/compare/v1.2.1...v1.2.2) (2020-08-19)
+
+
+### Bug Fixes
+
+* **logo:** change logo ([aef3e8f](https://github.com/lacolaco/pokepartymatch/commit/aef3e8f0d6fb95d2ddb4e0c943defad9413aaeb2))
+
 ### [1.2.1](https://github.com/lacolaco/pokepartymatch/compare/v1.2.0...v1.2.1) (2020-08-19)
 
 
