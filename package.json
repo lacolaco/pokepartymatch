@@ -1,6 +1,6 @@
 {
   "name": "pokepartymatch",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "scripts": {
     "ng": "ng",
     "start": "run-p 'start:*'",
