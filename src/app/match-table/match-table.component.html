@@ -1,72 +1,92 @@
-<ng-container *ngIf="matchTable$ | ngrxPush as matchTable">
-  <div class="match-table">
-    <div class="match-table-header">
-      <div class="header-row">
-        <div class="header-column"></div>
-        <div
-          class="header-row-cell party-member"
-          *ngFor="let pokemon of matchTable.party.members; trackBy: trackByForPartyMember; index as partyIndex"
-        >
-          <app-pokeselect
-            [value]="pokemon"
-            [pickerPosition]="'bottom'"
-            (valueChange)="changePartyPokemon(partyIndex, $event)"
-          ></app-pokeselect>
-          <app-pokelabel class="pokemon-label" [pokemon]="pokemon"></app-pokelabel>
-          <button
-            class="reset-party-member-button"
-            nz-button
-            nzSize="small"
-            nzShape="circle"
-            (click)="resetPartyMember(partyIndex)"
-            title="入力をリセット"
-          >
-            <i class="icon fas fa-eraser"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="match-table-body" cdkDropList (cdkDropListDropped)="onEnemyRowDrop($event)">
-      <div
-        *ngFor="let enemy of matchTable.enemies; trackBy: trackByForEmemies; index as enemyIndex; odd as odd"
-        class="match-table-row"
-        [class.has-no-win-match]="enemy.hasNoWinMatch"
-        [class.row-odd]="odd"
-        cdkDrag
-      >
-        <div class="header-column enemy">
-          <div class="sort-grip" cdkDragHandle>
-            <i class="fas fa-grip-lines-vertical"></i>
+<ng-container *ngIf="state$ | ngrxPush as state">
+  <ng-container *ngIf="state.matchTableLoading; else matchTableView">
+    <nz-spin></nz-spin>
+  </ng-container>
+  <ng-template #matchTableView>
+    <div class="match-table">
+      <div class="match-table-header">
+        <div class="header-row">
+          <div class="header-column control-box">
+            <button nz-button *ngIf="state.readonly" (click)="startEditing()">コピーして編集</button>
           </div>
-          <app-pokeselect
-            [value]="enemy.pokemon"
-            [pickerPosition]="'right'"
-            (valueChange)="changeEnemyPokemon(enemyIndex, $event)"
-          ></app-pokeselect>
-          <app-pokelabel class="pokemon-label" [pokemon]="enemy.pokemon"></app-pokelabel>
-          <button
-            class="remove-button"
-            nz-button
-            nzSize="small"
-            nzShape="circle"
-            (click)="removeEnemy(enemyIndex)"
-            *ngIf="matchTable.enemies.length > 1"
-            title="仮想敵を削除"
+          <div
+            class="header-row-cell party-member"
+            *ngFor="let pokemon of state.matchTable.party.members; trackBy: trackByForPartyMember; index as partyIndex"
           >
-            <i class="icon fas fa-times"></i>
-          </button>
-        </div>
-        <div class="table-cell match" *ngFor="let match of enemy.matches; index as matchIndex">
-          <app-match-input [value]="match" (valueChange)="changeMatch(enemyIndex, matchIndex, $event)"></app-match-input>
+            <app-pokeselect
+              [value]="pokemon"
+              [pickerPosition]="'bottom'"
+              [readonly]="state.readonly"
+              (valueChange)="changePartyPokemon(partyIndex, $event)"
+            ></app-pokeselect>
+            <app-pokelabel class="pokemon-label" [pokemon]="pokemon"></app-pokelabel>
+            <button
+              class="reset-party-member-button"
+              nz-button
+              nzSize="small"
+              nzShape="circle"
+              (click)="resetPartyMember(partyIndex)"
+              title="入力をリセット"
+              *ngIf="!state.readonly"
+            >
+              <i class="icon fas fa-eraser"></i>
+            </button>
+          </div>
         </div>
       </div>
-      <div class="match-table-row">
-        <div class="table-cell">
-          <button nz-button nzType="default" (click)="addEnemy()">
-            仮想敵を追加する
-          </button>
+      <div class="match-table-body" cdkDropList (cdkDropListDropped)="onEnemyRowDrop($event)">
+        <div
+          *ngFor="let enemy of state.matchTable.enemies; trackBy: trackByForEmemies; index as enemyIndex; odd as odd"
+          class="match-table-row"
+          [class.has-no-win-match]="enemy.hasNoWinMatch"
+          [class.row-odd]="odd"
+          cdkDrag
+        >
+          <div class="header-column enemy">
+            <div class="sort-grip" cdkDragHandle [cdkDragHandleDisabled]="state.readonly">
+              <i *ngIf="!state.readonly" class="fas fa-grip-lines-vertical"></i>
+            </div>
+            <app-pokeselect
+              [value]="enemy.pokemon"
+              [pickerPosition]="'right'"
+              [readonly]="state.readonly"
+              (valueChange)="changeEnemyPokemon(enemyIndex, $event)"
+            ></app-pokeselect>
+            <app-pokelabel class="pokemon-label" [pokemon]="enemy.pokemon"></app-pokelabel>
+            <button
+              class="remove-button"
+              nz-button
+              nzSize="small"
+              nzShape="circle"
+              (click)="removeEnemy(enemyIndex)"
+              *ngIf="!state.readonly && state.matchTable.enemies.length > 1"
+              title="仮想敵を削除"
+            >
+              <i class="icon fas fa-times"></i>
+            </button>
+          </div>
+          <div class="table-cell match" *ngFor="let match of enemy.matches; index as matchIndex">
+            <app-match-input
+              [value]="match"
+              [readonly]="state.readonly"
+              (valueChange)="changeMatch(enemyIndex, matchIndex, $event)"
+            ></app-match-input>
+          </div>
+        </div>
+        <div class="match-table-row">
+          <div class="table-cell">
+            <button *ngIf="!state.readonly" nz-button nzType="default" (click)="addEnemy()">
+              仮想敵を追加する
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+
+    <div class="fab-container">
+      <button *ngIf="!state.readonly" class="fab" nz-button nzShape="circle" nzSize="large" (click)="save()">
+        <i class="fab-icon fas fa-save"></i>
+      </button>
+    </div>
+  </ng-template>
 </ng-container>

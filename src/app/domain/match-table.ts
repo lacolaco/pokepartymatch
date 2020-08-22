@@ -1,7 +1,7 @@
 import { Serializable } from './utils/serializable';
 import { Enemy, EnemyJSON, MatchValue } from './enemy';
 import { Party, PartyJSON } from './party';
-import { Pokemon } from './pokemon';
+import { Pokemon, findPokemon } from './pokemon';
 
 export type MatchTableJSON = {
   party: PartyJSON;
@@ -67,4 +67,23 @@ export class MatchTable implements Serializable {
       enemies: [...this.enemies],
     });
   }
+}
+
+export function createExampleMatchTable(): MatchTable {
+  return MatchTable.create({
+    party: Party.create([
+      findPokemon('815'), // エースバーン
+      findPokemon('887'), // ドラパルト
+      findPokemon('778'), // ミミッキュ
+      findPokemon('468'), // トゲキッス
+      findPokemon('530'), // ドリュウズ
+      findPokemon('143'), // カビゴン
+    ]),
+    enemies: [
+      Enemy.create({
+        pokemon: findPokemon('887'), // ドラパルト
+        matches: [null, null, 'win', 'win', null, null],
+      }),
+    ],
+  });
 }
