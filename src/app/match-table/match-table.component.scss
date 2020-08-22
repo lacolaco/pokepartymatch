@@ -48,6 +48,9 @@ $rowHeight: 56px;
 }
 
 .control-box {
+  display: flex;
+  height: 100%;
+  align-items: center;
 }
 
 .match-table-header {
