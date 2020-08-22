@@ -1,7 +1,14 @@
 <ng-container *ngIf="state$ | ngrxPush as state">
-  <button class="trigger" nz-popover [nzPopoverPlacement]="pickerPosition" [nzPopoverContent]="pokepicker" [nzPopoverTrigger]="'click'">
+  <button
+    class="trigger"
+    [disabled]="readonly"
+    nz-popover
+    [nzPopoverPlacement]="pickerPosition"
+    [nzPopoverContent]="pokepicker"
+    [nzPopoverTrigger]="'click'"
+  >
     <app-pokeicon [pokemon]="value" [height]="48"></app-pokeicon>
-    <i class="icon fas fa-pen"></i>
+    <i *ngIf="!readonly" class="icon fas fa-pen"></i>
   </button>
 
   <ng-template #pokepicker>

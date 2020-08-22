@@ -18,6 +18,9 @@ export class PokeselectComponent implements OnInit {
   @Input()
   pickerPosition: 'bottom' | 'right' = 'bottom';
 
+  @Input()
+  readonly = false;
+
   @Output()
   valueChange = new EventEmitter<Pokemon>();
 

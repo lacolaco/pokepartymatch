@@ -1,10 +1,9 @@
 :host {
   display: inline-block;
-  // width: 100%;
 }
 
-$columnWidth: 100px;
-$headerColumnWidth: 194px;
+$columnWidth: 92px;
+$headerColumnWidth: 192px;
 $headerRowHeight: 84px;
 $rowHeight: 56px;
 
@@ -16,7 +15,7 @@ $rowHeight: 56px;
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 16px;
+  padding: 0 16px;
 }
 
 .table-cell {
@@ -30,6 +29,7 @@ $rowHeight: 56px;
 
 .header-column {
   width: $headerColumnWidth;
+  margin-right: 8px;
 }
 
 .header-row {
@@ -45,6 +45,9 @@ $rowHeight: 56px;
       margin-right: 8px;
     }
   }
+}
+
+.control-box {
 }
 
 .match-table-header {
@@ -143,4 +146,18 @@ $rowHeight: 56px;
 
 .match-table-body.cdk-drop-list-dragging .match-table-row:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.fab-container {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+
+  .fab {
+    width: 64px;
+    height: 64px;
+    .fab-icon {
+      font-size: 24px;
+    }
+  }
 }

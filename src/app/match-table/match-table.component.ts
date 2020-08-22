@@ -1,11 +1,11 @@
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Enemy, MatchValue } from '../domain/enemy';
-import { MatchTable } from '../domain/match-table';
 import { Pokemon } from '../domain/pokemon';
 import { MatchTableStore } from './match-table.store';
 import { MatchTableUsecase } from './match-table.usecase';
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-match-table',
@@ -17,17 +17,32 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 export class MatchTableComponent implements OnInit, OnDestroy {
   constructor(private readonly store: MatchTableStore, private readonly usecase: MatchTableUsecase) {}
 
-  readonly matchTable$: Observable<MatchTable> = this.store.select((state) => state.matchTable);
+  readonly state$ = this.store.valueChanges.pipe(
+    map((state) => ({
+      matchTable: state.matchTable,
+      matchTableLoading: state.matchTableLoading !== 0,
+      readonly: state.restoreFromRemote,
+    }))
+  );
 
   private readonly onDestroy$ = new Subject();
 
   ngOnInit(): void {
-    this.usecase.usePersistedState();
-    this.usecase.saveMatchTableOnChange();
+    this.usecase.restoreState().then(() => {
+      this.usecase.startLocalAutoSave();
+    });
   }
 
   ngOnDestroy(): void {
     this.onDestroy$.next();
+  }
+
+  save() {
+    this.usecase.saveMatchTable();
+  }
+
+  startEditing() {
+    this.usecase.startEditing();
   }
 
   onEnemyRowDrop(event: CdkDragDrop<unknown[]>): void {

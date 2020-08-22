@@ -1,32 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@lacolaco/reactive-store';
 import { environment } from '../../environments/environment';
-import { Enemy } from '../domain/enemy';
-import { MatchTable } from '../domain/match-table';
-import { Party } from '../domain/party';
-import { findPokemon } from '../domain/pokemon';
+import { createExampleMatchTable, MatchTable } from '../domain/match-table';
 
 export interface State {
   matchTable: MatchTable;
+  matchTableLoading: number;
+  restoreFromRemote: boolean;
 }
 
 export const initialValue: State = {
-  matchTable: MatchTable.create({
-    party: Party.create([
-      findPokemon('815'),
-      findPokemon('887'),
-      findPokemon('778'),
-      findPokemon('468'),
-      findPokemon('530'),
-      findPokemon('143'),
-    ]),
-    enemies: [
-      Enemy.create({
-        pokemon: findPokemon('887'),
-        matches: [null, null, 'win', 'win', null, null],
-      }),
-    ],
-  }),
+  matchTable: createExampleMatchTable(),
+  matchTableLoading: 0,
+  restoreFromRemote: false,
 };
 
 @Injectable()
@@ -39,5 +25,17 @@ export class MatchTableStore extends Store<State> {
         console.debug(`[MatchTableStore]`, update);
       });
     }
+  }
+
+  startLoading() {
+    this.update((state) => ({ ...state, matchTableLoading: state.matchTableLoading + 1 }));
+  }
+
+  finishLoading() {
+    this.update((state) => ({ ...state, matchTableLoading: state.matchTableLoading - 1 }));
+  }
+
+  updateMatchTable(update: (current: MatchTable) => MatchTable) {
+    this.update((state) => ({ ...state, matchTable: update(state.matchTable) }));
   }
 }

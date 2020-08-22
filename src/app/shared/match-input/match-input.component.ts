@@ -11,6 +11,9 @@ export class MatchInputComponent {
   @Input()
   value!: MatchValue;
 
+  @Input()
+  readonly = false;
+
   @Output()
   valueChange = new EventEmitter<MatchValue>();
 
