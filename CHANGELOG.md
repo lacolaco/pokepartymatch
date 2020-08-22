@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/lacolaco/pokepartymatch/compare/v1.4.4...v1.5.0) (2020-08-22)
+
+
+### Features
+
+* **app:** bump app version ([8b700b5](https://github.com/lacolaco/pokepartymatch/commit/8b700b582b9756b00be6128598f107007fbe4b26))
+* **match-table:** save on cloud ([#41](https://github.com/lacolaco/pokepartymatch/issues/41)) ([7caa7ea](https://github.com/lacolaco/pokepartymatch/commit/7caa7ea69871dcc046b129c3b4e04e9457003086))
+
+
+### Bug Fixes
+
+* **deps:** update dependency firebase to v7.19.0 ([#37](https://github.com/lacolaco/pokepartymatch/issues/37)) ([63ebb9a](https://github.com/lacolaco/pokepartymatch/commit/63ebb9a757f0c3e887a3e6ed84009d595978da97))
+* **deps:** update dependency zone.js to v0.11.1 ([#28](https://github.com/lacolaco/pokepartymatch/issues/28)) ([a9c16c6](https://github.com/lacolaco/pokepartymatch/commit/a9c16c67faf3530e89baca57187c89f1989c6a33))
+
 ### [1.4.4](https://github.com/lacolaco/pokepartymatch/compare/v1.4.3...v1.4.4) (2020-08-19)
 
 ### [1.4.3](https://github.com/lacolaco/pokepartymatch/compare/v1.4.2...v1.4.3) (2020-08-19)
