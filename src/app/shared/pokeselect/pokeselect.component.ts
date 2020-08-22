@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { NzPopoverDirective } from 'ng-zorro-antd/popover';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
 import { pokemons } from '../../data/pokemon-data';
@@ -25,6 +26,7 @@ export class PokeselectComponent implements OnInit {
   valueChange = new EventEmitter<Pokemon>();
 
   @ViewChild(PokepickerComponent) pokepicker!: PokepickerComponent;
+  @ViewChild(NzPopoverDirective) popover!: NzPopoverDirective;
 
   private readonly searchInput$ = new BehaviorSubject<string>('');
 
@@ -65,5 +67,6 @@ export class PokeselectComponent implements OnInit {
 
   selectPokemon(pokemon: Pokemon): void {
     this.valueChange.emit(pokemon);
+    this.popover.hide();
   }
 }

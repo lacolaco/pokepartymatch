@@ -10,7 +10,7 @@ button {
   border: none;
   padding: 0;
 
-  &:not(&:disabled) {
+  &:not(:disabled) {
     cursor: pointer;
   }
 }

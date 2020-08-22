@@ -73,11 +73,11 @@ export class MatchTableComponent implements OnInit, OnDestroy {
     this.usecase.changeMatch(enemyIndex, matchIndex, match);
   }
 
-  trackByForPartyMember(index: number, item: Pokemon): string {
-    return `${index}:${item.key}`;
+  trackByForPartyMember(index: number, _: Pokemon) {
+    return index;
   }
 
-  trackByForEmemies(_: number, item: Enemy): Enemy {
+  trackByForEmemies(_: number, item: Enemy) {
     return item;
   }
 }
