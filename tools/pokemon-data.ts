@@ -474,14 +474,14 @@ const pokemons: Pokemon[] = Object.entries(pokemonData)
               return [
                 {
                   form: 'single-strike',
-                  slug,
+                  slug: `${data.slug.eng}-gmax`,
                   idx: data.idx,
                   name_jpn: `${data.name.jpn}（いちげき）`,
                   names: data.name,
                 },
                 {
                   form: 'rapid-strike',
-                  slug,
+                  slug: `${data.slug.eng}-rapid-strike-gmax`,
                   idx: data.idx,
                   name_jpn: `${data.name.jpn}（れんげき）`,
                   names: data.name,

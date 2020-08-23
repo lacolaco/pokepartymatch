@@ -6,6 +6,7 @@
     [nzPopoverPlacement]="pickerPosition"
     [nzPopoverContent]="pokepicker"
     [nzPopoverTrigger]="'click'"
+    (nzPopoverVisibleChange)="onPopoverVisibleChange($event)"
   >
     <app-pokeicon [pokemon]="value" [height]="48"></app-pokeicon>
     <i *ngIf="!readonly" class="icon fas fa-pen"></i>

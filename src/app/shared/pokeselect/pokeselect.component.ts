@@ -61,6 +61,12 @@ export class PokeselectComponent implements OnInit {
     this.pokepicker.focus();
   }
 
+  onPopoverVisibleChange(visible: boolean) {
+    if (!visible) {
+      this.searchInput$.next('');
+    }
+  }
+
   onSearchChange(search: string): void {
     this.searchInput$.next(search.toLowerCase());
   }
