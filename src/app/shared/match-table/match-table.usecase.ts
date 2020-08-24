@@ -1,17 +1,17 @@
-import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { Injectable, OnDestroy } from '@angular/core';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Subject } from 'rxjs';
 import { skip, takeUntil } from 'rxjs/operators';
-import { Enemy, MatchValue } from '../domain/enemy';
-import { MatchTable } from '../domain/match-table';
-import { findPokemon, Pokemon } from '../domain/pokemon';
-import { MatchTableRepository } from '../repository/match-table';
-import { SearchParams } from '../utils/search-params';
+import { Enemy, MatchValue } from '../../domain/enemy';
+import { MatchTable } from '../../domain/match-table';
+import { findPokemon, Pokemon } from '../../domain/pokemon';
+import { MatchTableRepository } from '../../repository/match-table';
+import { SearchParams } from '../../utils/search-params';
 import { MatchTableStore } from './match-table.store';
-import { NzNotificationService } from 'ng-zorro-antd/notification';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class MatchTableUsecase implements OnDestroy {
   constructor(
     private readonly store: MatchTableStore,
@@ -20,6 +20,10 @@ export class MatchTableUsecase implements OnDestroy {
     private readonly notification: NzNotificationService,
     private readonly clipboard: Clipboard
   ) {}
+
+  get readonly$() {
+    return this.store.select((state) => state.restoreFromRemote);
+  }
 
   private readonly onDestroy$ = new Subject();
 

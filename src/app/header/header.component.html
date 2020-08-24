@@ -1,0 +1,13 @@
+<ng-container *ngIf="state$ | ngrxPush as state">
+  <img class="header-logo" src="/assets/images/logo.svg" height="40" width="276" alt="PokePartyMatch logo" />
+  <span class="header-description">
+    あのポケモンの対策できてる？ <br />
+    #pokepartymatch
+  </span>
+  <div class="header-spacer"></div>
+  <div class="header-actions">
+    <button nz-button *ngIf="!state.readonly" class="icon-button" (click)="saveMatchTable()">
+      <i class="icon fas fa-cloud-upload-alt"></i><span>保存してURLを取得</span>
+    </button>
+  </div>
+</ng-container>

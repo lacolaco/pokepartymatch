@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@lacolaco/reactive-store';
-import { environment } from '../../environments/environment';
-import { createExampleMatchTable, MatchTable } from '../domain/match-table';
+import { environment } from '../../../environments/environment';
+import { createExampleMatchTable, MatchTable } from '../../domain/match-table';
 
 export interface State {
   matchTable: MatchTable;
@@ -15,7 +15,7 @@ export const initialValue: State = {
   restoreFromRemote: false,
 };
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class MatchTableStore extends Store<State> {
   constructor() {
     super({ initialValue });

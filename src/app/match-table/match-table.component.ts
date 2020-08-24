@@ -4,15 +4,14 @@ import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Enemy, MatchValue } from '../domain/enemy';
 import { Pokemon } from '../domain/pokemon';
-import { MatchTableStore } from './match-table.store';
-import { MatchTableUsecase } from './match-table.usecase';
+import { MatchTableStore } from '../shared/match-table/match-table.store';
+import { MatchTableUsecase } from '../shared/match-table/match-table.usecase';
 
 @Component({
   selector: 'app-match-table',
   templateUrl: './match-table.component.html',
   styleUrls: ['./match-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [MatchTableStore, MatchTableUsecase],
 })
 export class MatchTableComponent implements OnInit, OnDestroy {
   constructor(private readonly store: MatchTableStore, private readonly usecase: MatchTableUsecase) {}
@@ -35,10 +34,6 @@ export class MatchTableComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.onDestroy$.next();
-  }
-
-  save() {
-    this.usecase.saveMatchTable();
   }
 
   startEditing() {

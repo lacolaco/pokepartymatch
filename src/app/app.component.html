@@ -1,30 +1,28 @@
-<header class="header">
-  <img class="header-logo" src="/assets/images/logo.svg" height="56" alt="PokePartyMatch logo" />
-  <span nz-typography nzType="secondary" class="header-description">
-    「あのポケモンの対策できてる？」を確認するツールです。<br />
-    入力したデータはブラウザに保存されます。
-  </span>
-</header>
+<div class="single-column">
+  <header class="header">
+    <app-header></app-header>
+  </header>
 
-<main class="column">
-  <app-match-table></app-match-table>
-</main>
+  <main class="main">
+    <app-match-table></app-match-table>
+  </main>
 
-<footer>
-  <div>
-    <span class="version">Ver.{{ version }}</span>
-    更新履歴
-    <ul>
-      <li>v1.3: クラウド保存機能の追加</li>
-      <li>v1.2: UIの改善</li>
-      <li>v1.1.1: 性別により能力が変わるポケモン（イエッサン・ニャオニクス）に対応</li>
-      <li>v1.1: 鎧の孤島対応</li>
-      <li>v1.0: サービス公開</li>
-    </ul>
+  <footer>
     <div>
-      本サービスは非公式サービスです。株式会社ポケモンおよび任天堂株式会社とは一切関係ありません。<br />
-      意見・要望などあれば作者Twitter（下記リンク）へ。<br />
-      &copy; 2020 <a href="https://twitter.com/laco2net">lacolaco</a>
+      <span class="version">Ver.{{ version }}</span>
+      更新履歴
+      <ul>
+        <li>v1.3: クラウド保存機能の追加</li>
+        <li>v1.2: UIの改善</li>
+        <li>v1.1.1: 性別により能力が変わるポケモン（イエッサン・ニャオニクス）に対応</li>
+        <li>v1.1: 鎧の孤島対応</li>
+        <li>v1.0: サービス公開</li>
+      </ul>
+      <div>
+        本サービスは非公式サービスです。株式会社ポケモンおよび任天堂株式会社とは一切関係ありません。<br />
+        意見・要望などあれば作者Twitter（下記リンク）へ。<br />
+        &copy; 2020 <a href="https://twitter.com/laco2net">lacolaco</a>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
+</div>

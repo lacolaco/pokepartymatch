@@ -69,6 +69,7 @@ $rowHeight: 56px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  overflow: auto;
 }
 
 .match-table-row {
@@ -151,18 +152,4 @@ $rowHeight: 56px;
 
 .match-table-body.cdk-drop-list-dragging .match-table-row:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
-
-.fab-container {
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-
-  .fab {
-    width: 64px;
-    height: 64px;
-    .fab-icon {
-      font-size: 24px;
-    }
-  }
 }

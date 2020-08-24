@@ -75,18 +75,10 @@
         </div>
         <div class="match-table-row">
           <div class="table-cell">
-            <button *ngIf="!state.readonly" nz-button nzType="default" (click)="addEnemy()">
-              仮想敵を追加する
-            </button>
+            <button *ngIf="!state.readonly" nz-button nzType="default" (click)="addEnemy()">仮想敵を追加する</button>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="fab-container">
-      <button *ngIf="!state.readonly" class="fab" nz-button nzShape="circle" nzSize="large" (click)="save()">
-        <i class="fab-icon fas fa-save"></i>
-      </button>
     </div>
   </ng-template>
 </ng-container>

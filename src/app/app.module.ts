@@ -7,19 +7,19 @@ import { AngularFirePerformanceModule } from '@angular/fire/performance';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
-import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { MatchTableModule } from './match-table/match-table.module';
+import { HeaderModule } from './header/header.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HeaderModule,
     MatchTableModule,
     NzNotificationModule,
-    NzTypographyModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAnalyticsModule,
     AngularFireAuthModule,

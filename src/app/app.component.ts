@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { dom, library } from '@fortawesome/fontawesome-svg-core';
-import { faEraser, faGripLinesVertical, faPen, faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faEraser, faGripLinesVertical, faPen, faTimes, faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 import { VERSION } from './version';
 
 @Component({
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.auth.signInAnonymously();
 
-    library.add(faEraser, faPen, faTimes, faGripLinesVertical, faSave);
+    library.add(faEraser, faPen, faTimes, faGripLinesVertical, faCloudUploadAlt);
     dom.watch();
   }
 }
