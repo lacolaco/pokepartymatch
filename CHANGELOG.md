@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/lacolaco/pokepartymatch/compare/v1.5.2...v1.6.0) (2020-08-24)
+
+
+### Features
+
+* bump Angular version 10.1.0-next ([078e9e2](https://github.com/lacolaco/pokepartymatch/commit/078e9e2e9ae252c81fecfdf19dd11ef83d4a101d))
+
 ### [1.5.2](https://github.com/lacolaco/pokepartymatch/compare/v1.5.1...v1.5.2) (2020-08-23)
 
 
