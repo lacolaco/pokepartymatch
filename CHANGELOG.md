@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.1](https://github.com/lacolaco/pokepartymatch/compare/v1.6.0...v1.6.1) (2020-08-26)
+
+
+### Bug Fixes
+
+* **firebase:** use undefiend as default value ([1d8987c](https://github.com/lacolaco/pokepartymatch/commit/1d8987cd72be65dba25fd5da642605a5ff03b738))
+
 ## [1.6.0](https://github.com/lacolaco/pokepartymatch/compare/v1.5.2...v1.6.0) (2020-08-24)
 
 
