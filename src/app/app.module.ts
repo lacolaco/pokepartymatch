@@ -29,7 +29,7 @@ import { HeaderModule } from './header/header.module';
   providers: [
     {
       provide: FIRESTORE_SETTINGS,
-      useValue: environment.production ? {} : ({ host: 'localhost:8080', ssl: false } as FirestoreSettings),
+      useValue: environment.production ? undefined : ({ host: 'localhost:8080', ssl: false } as FirestoreSettings),
     },
   ],
   bootstrap: [AppComponent],
