@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.2](https://github.com/lacolaco/pokepartymatch/compare/v1.6.1...v1.6.2) (2020-09-01)
+
+
+### Bug Fixes
+
+* revert AngularFire version due to Analytics bug ([0b0abea](https://github.com/lacolaco/pokepartymatch/commit/0b0abead285a2bdaf950c899727b957594c0a5d9))
+
 ### [1.6.1](https://github.com/lacolaco/pokepartymatch/compare/v1.6.0...v1.6.1) (2020-08-26)
 
 
