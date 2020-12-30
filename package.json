@@ -35,7 +35,7 @@
     "@ngrx/component": "10.0.0",
     "firebase": "7.23.0",
     "ng-zorro-antd": "10.0.1",
-    "pokesprite-images": "2.2.5",
+    "pokesprite-images": "2.5.0",
     "rxjs": "6.6.3",
     "tslib": "2.0.3",
     "zone.js": "0.11.1"
