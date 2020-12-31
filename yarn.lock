@@ -8270,10 +8270,10 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-ng-zorro-antd@10.0.1:
-  version "10.0.1"
-  resolved "https://registry.yarnpkg.com/ng-zorro-antd/-/ng-zorro-antd-10.0.1.tgz#9dd884de952206bf997bd68d02ce44017c0d72d8"
-  integrity sha512-kQzdYA9hcgtn/PcLfDO0caOUkksL5AWlkLCrw1K0QMdTE7ndH7azMvu6xzwV/JeK7UA1JELPfsK1wpOgdzuFaw==
+ng-zorro-antd@10.2.2:
+  version "10.2.2"
+  resolved "https://registry.yarnpkg.com/ng-zorro-antd/-/ng-zorro-antd-10.2.2.tgz#5951f1fd5d1e405e7fe983756dca1eb942b255de"
+  integrity sha512-4Q2G6DtRJnEQXFcIEUyqgFi6JXcEF9bN0zOPNBV7LTNgjOf31QiE+3Pu2ifz8esGVwv7vmG8if8V2/Ha/Ol8Dw==
   dependencies:
     "@angular/cdk" "^10.2.4"
     "@ant-design/icons-angular" "^10.0.0"
