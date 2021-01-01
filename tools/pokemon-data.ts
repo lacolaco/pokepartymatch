@@ -51,6 +51,10 @@ const pokemons: Pokemon[] = Object.entries(pokemonData)
         if (data.slug.eng === 'unown' && form !== '$') {
           return false;
         }
+        // シャドウルギア
+        if (data.slug.eng === 'lugia-shadow') {
+          return false;
+        }
         // パッチール
         if (data.slug.eng === 'spinda' && form !== '$') {
           return false;
