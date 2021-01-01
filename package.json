@@ -33,7 +33,7 @@
     "@fortawesome/free-solid-svg-icons": "5.15.1",
     "@lacolaco/reactive-store": "4.0.0",
     "@ngrx/component": "10.1.2",
-    "firebase": "7.24.0",
+    "firebase": "8.2.1",
     "ng-zorro-antd": "10.2.2",
     "pokesprite-images": "2.5.0",
     "rxjs": "6.6.3",
