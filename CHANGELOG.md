@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/lacolaco/pokepartymatch/compare/v1.6.2...v1.7.0) (2021-01-02)
+
+
+### Features
+
+* update pokemon-data ([363fac6](https://github.com/lacolaco/pokepartymatch/commit/363fac62281c73c3d3b86cae5859f612ad78782f))
+* **deps:** update angular version to 11 ([a0dcb2d](https://github.com/lacolaco/pokepartymatch/commit/a0dcb2d10305ae6694ecbf8c174bca4a1879c9f2))
+* bump Angular CDK ([540534a](https://github.com/lacolaco/pokepartymatch/commit/540534a5753d342bfad4f6fba7880cb25fb9b47f))
+* bump Angular version ([c15d01e](https://github.com/lacolaco/pokepartymatch/commit/c15d01e324cc01a0fc108c02be0a66ee8d98f59e))
+* bump AngularFire ([40e3a67](https://github.com/lacolaco/pokepartymatch/commit/40e3a679fbc33c254da6ffb276757ed6a23e3062))
+* bump ng-zorro ([f383483](https://github.com/lacolaco/pokepartymatch/commit/f383483560dd9f42389102a1be854cc1d3b96362))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @ngrx/component to v10.1.2 ([#70](https://github.com/lacolaco/pokepartymatch/issues/70)) ([8ac32be](https://github.com/lacolaco/pokepartymatch/commit/8ac32be8c6d98318ddf8bcd1ec29da4638dcf4d1))
+* **deps:** update dependency firebase to v7.19.1 ([#46](https://github.com/lacolaco/pokepartymatch/issues/46)) ([2ed5626](https://github.com/lacolaco/pokepartymatch/commit/2ed5626427e62b6ff13bd9434022cf53721c0877))
+* **deps:** update dependency firebase to v7.20.0 ([#53](https://github.com/lacolaco/pokepartymatch/issues/53)) ([7a1155b](https://github.com/lacolaco/pokepartymatch/commit/7a1155b14453f04703671a307ed308159668fe9d))
+* **deps:** update dependency firebase to v7.21.0 ([#57](https://github.com/lacolaco/pokepartymatch/issues/57)) ([3f7e681](https://github.com/lacolaco/pokepartymatch/commit/3f7e681a8551bb861fcc2cdb48ec3b402a8df43e))
+* **deps:** update dependency firebase to v7.21.1 ([#60](https://github.com/lacolaco/pokepartymatch/issues/60)) ([5b2f358](https://github.com/lacolaco/pokepartymatch/commit/5b2f35823a9a35e60552a647d23de735dad5dc15))
+* **deps:** update dependency firebase to v7.23.0 ([#65](https://github.com/lacolaco/pokepartymatch/issues/65)) ([e7345c8](https://github.com/lacolaco/pokepartymatch/commit/e7345c82ffddbd25313c0a2893ded8231d375224))
+* **deps:** update dependency firebase to v7.24.0 ([#72](https://github.com/lacolaco/pokepartymatch/issues/72)) ([6d7d713](https://github.com/lacolaco/pokepartymatch/commit/6d7d713e8bffed99af6b9f809271f8f5a9fc0a72))
+* **deps:** update dependency firebase to v8 ([#78](https://github.com/lacolaco/pokepartymatch/issues/78)) ([0e5d063](https://github.com/lacolaco/pokepartymatch/commit/0e5d063f8712a7f2fe4d76c2cb3e2ac67a097d78))
+* **deps:** update dependency ng-zorro-antd to v10.2.2 ([#73](https://github.com/lacolaco/pokepartymatch/issues/73)) ([1a24304](https://github.com/lacolaco/pokepartymatch/commit/1a243041ec5106114135ac66b2f40c38b4a58e50))
+* **deps:** update dependency pokesprite-images to v2.5.0 ([#80](https://github.com/lacolaco/pokepartymatch/issues/80)) ([c2337c4](https://github.com/lacolaco/pokepartymatch/commit/c2337c47e8de340da549dd43fb5643114d44fb8c))
+* **deps:** update dependency rxjs to v6.6.3 ([#51](https://github.com/lacolaco/pokepartymatch/issues/51)) ([39eeea1](https://github.com/lacolaco/pokepartymatch/commit/39eeea1bb614aaabf143e67267138e08f5f71884))
+* **deps:** update dependency tslib to v2.0.3 ([#69](https://github.com/lacolaco/pokepartymatch/issues/69)) ([d543b77](https://github.com/lacolaco/pokepartymatch/commit/d543b774792324e215c3d24c98bae11627258582))
+* **deps:** update dependency zone.js to v0.11.3 ([#75](https://github.com/lacolaco/pokepartymatch/issues/75)) ([0dbf604](https://github.com/lacolaco/pokepartymatch/commit/0dbf604df4d2170c02edcba8fc5693cd469b6c4d))
+* **deps:** update font awesome ([#63](https://github.com/lacolaco/pokepartymatch/issues/63)) ([a3d1e21](https://github.com/lacolaco/pokepartymatch/commit/a3d1e2123ddad4a55c235098e9ccca0eb9d3fe81))
+* **deps:** update font awesome ([#66](https://github.com/lacolaco/pokepartymatch/issues/66)) ([0afd1f0](https://github.com/lacolaco/pokepartymatch/commit/0afd1f02c708950ea1151d758d60bbc7a57ff3cd))
+
 ### [1.6.2](https://github.com/lacolaco/pokepartymatch/compare/v1.6.1...v1.6.2) (2020-09-01)
 
 
