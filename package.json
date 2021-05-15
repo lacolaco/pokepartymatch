@@ -45,7 +45,7 @@
     "@angular-devkit/build-angular": "0.1100.5",
     "@angular/cli": "11.0.5",
     "@angular/compiler-cli": "11.0.5",
-    "@types/jasmine": "3.6.2",
+    "@types/jasmine": "3.7.4",
     "@types/node": "12.19.12",
     "codelyzer": "6.0.1",
     "firebase-tools": "9.1.0",
