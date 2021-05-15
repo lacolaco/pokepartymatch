@@ -36,7 +36,7 @@
     "firebase": "8.2.1",
     "ng-zorro-antd": "10.2.2",
     "pokesprite-images": "2.5.0",
-    "rxjs": "6.6.3",
+    "rxjs": "7.0.1",
     "tslib": "2.1.0",
     "zone.js": "0.11.3"
   },
