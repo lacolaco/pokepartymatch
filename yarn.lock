@@ -1839,10 +1839,10 @@
   resolved "https://registry.yarnpkg.com/@lacolaco/reactive-store/-/reactive-store-4.0.0.tgz#20019116cf480be16a47cadde88d04aaaffa1e50"
   integrity sha512-btXCHbCQTkSrhDn4lwKUyDz/BuAc2mN1ZIT1svCsAzcjSJ61cu8MmB5Ttk9u7o97/hH6vUPhCLNjqjpT5ys5ag==
 
-"@ngrx/component@10.1.2":
-  version "10.1.2"
-  resolved "https://registry.yarnpkg.com/@ngrx/component/-/component-10.1.2.tgz#48884aab3feb21d3f43fee14126b4a21d8ee750a"
-  integrity sha512-VB4QidyDWsIdzG5U37btw9jHZ1QtnDRPlwyL9IHgdLWhbjyQjPkhINSitcV7MKYS1AEUuL6zLmopnWUeI+4ZGg==
+"@ngrx/component@12.0.0":
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/component/-/component-12.0.0.tgz#d4d244bdf9e0d175a7eb8fee92976e85149018d2"
+  integrity sha512-P/6DcAe3IKK5qjivNvErDuZ/zftNohABm+8nKWUTW74Dv09ail7W4fLFnGmW8lnviIDMMmCaMgXv0Fxy18eb1Q==
   dependencies:
     tslib "^2.0.0"
 
